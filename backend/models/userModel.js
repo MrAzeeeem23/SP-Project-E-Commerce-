@@ -4,7 +4,7 @@ import mongoose from 'mongoose'
 // this is a structure of user table
 
 const userTable = mongoose.Schema({
-    usename: {
+    username: {
         type: String,
         required: true
     },
@@ -18,7 +18,7 @@ const userTable = mongoose.Schema({
         required: true
     },
     isAdmin: {
-        type: String,
+        type: Boolean,
         require: true,
         default: false
     },
