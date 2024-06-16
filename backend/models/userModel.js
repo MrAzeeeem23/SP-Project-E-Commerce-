@@ -24,7 +24,7 @@ const userTable = mongoose.Schema({
     },
 },
 
-{ timestamp: true }
+{  timestamps: true  }
 
 )
 
