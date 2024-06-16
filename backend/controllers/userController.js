@@ -4,25 +4,25 @@ import bcrypt from "bcryptjs"
 import createToken from "../utils/createToken.js"
 
 const createUser = asyncHandler(async (req, res) => {
-    const {username, email, password} = req.body
-    
-    if(!username || !email || !password){
+    const { username, email, password } = req.body
+
+    if (!username || !email || !password) {
         throw new Error("Please Fill all the inputs")
     }
 
-    const userExits = await User.findOne({email})
+    const userExits = await User.findOne({ email })
 
-    if(userExits) res.status(400).send("User Already Exists")
+    if (userExits) res.status(400).send("User Already Exists")
 
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
-    const newUser = new User({ username, email, password: hashedPassword})
+    const newUser = new User({ username, email, password: hashedPassword })
 
     try {
         await newUser.save()
         createToken(res, newUser._id)
-        
+
         // for showing the user details
         res.status(201).json({
             _id: newUser._id,
@@ -35,19 +35,19 @@ const createUser = asyncHandler(async (req, res) => {
         res.status(400)
         console.log(error.message)
         throw new Error("Invalid User Data", error.massage)
-        
+
     }
 });
 
-const loginUser = asyncHandler( async (req, res) => {
-    const {email, password} = req.body
+const loginUser = asyncHandler(async (req, res) => {
+    const { email, password } = req.body
 
-    const existingUser = await User.findOne({email})
+    const existingUser = await User.findOne({ email })
 
-    if(existingUser){
+    if (existingUser) {
         const ispasswordvalid = await bcrypt.compare(password, existingUser.password)
 
-        if(ispasswordvalid){
+        if (ispasswordvalid) {
             createToken(res, existingUser._id)
 
             res.status(201).json({
@@ -62,18 +62,34 @@ const loginUser = asyncHandler( async (req, res) => {
     }
 })
 
-const logoutCurrentUser = asyncHandler( async (req, res) => {
+const logoutCurrentUser = asyncHandler(async (req, res) => {
     res.cookie('jwt', '', {
         httpOnly: true,
         expires: new Date(0),
     })
 
-    res.status(200).json({message: "successfully logout" })
+    res.status(200).json({ message: "successfully logout" })
 });
 
-const getAllUsers = asyncHandler( async (req, res) => {
+const getAllUsers = asyncHandler(async (req, res) => {
     const users = await User.find({})
     res.json(users)
 })
 
-export { createUser, loginUser, logoutCurrentUser, getAllUsers}
+const getCurrentUserProfile = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id)
+
+    if (user) {
+        res.json({
+            _id: user._id,
+            username: user.username,
+            password: user.password
+        })
+    }
+    else {
+        res.send(404)
+        throw new Error("User Not found!")
+    }
+})
+
+export { createUser, loginUser, logoutCurrentUser, getAllUsers,  getCurrentUserProfile }
