@@ -6,21 +6,15 @@ import cookieParser from 'cookie-parser';
 
 import connectDB from './config/db.js';
 import userRoute from './routes/userRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js'
 
-// Load environment variables
+
 dotenv.config();
 
-// Debugging line to check if .env file is loaded correctly
-console.log('Environment variables loaded:', process.env);
-
-// Define port from environment variable or use default
 const port = process.env.PORT || 5000;
-console.log(`Port: ${port}`); // Debugging line
-
-// Connect to the database
+console.log(`Port: ${port}`);
 connectDB();
 
-// Initialize Express application
 const app = express();
 
 app.use(express.json());
@@ -29,14 +23,11 @@ app.use(cookieParser());
 
 // Define routes
 app.use('/api/users', userRoute);
+app.use('/api/category', categoryRoutes)
 
-// Debugging line to check specific environment variable
-// console.log(`JWT Secret: ${process.env.JWT_SECRET}`);
 
-// Define root route
 app.get('/', (req, res) => {
   res.send('Hello world');
 });
 
-// Start server
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
