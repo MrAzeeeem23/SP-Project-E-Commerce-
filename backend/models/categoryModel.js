@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 const categoryTable = new mongoose.Schema({
     name: {
         type: String,
-        trme: true,
+        trim: true,
         required: true,
         maxLength: 32,
         unique: true 
