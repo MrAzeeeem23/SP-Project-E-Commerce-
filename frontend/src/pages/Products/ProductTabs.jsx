@@ -57,7 +57,7 @@ const ProductTabs = ({
       </section>
 
       {/* Second Part */}
-      <section>
+      <section className="mx-3">
         {activeTab === 1 && (
           <div className="mt-4">
             {userInfo ? (
@@ -100,7 +100,7 @@ const ProductTabs = ({
                 <button
                   type="submit"
                   disabled={loadingProductReview}
-                  className="bg-pink-600 text-white py-2 px-4 rounded-lg"
+                  className="bg-red-600 text-white py-2 px-4 rounded-lg"
                 >
                   Submit
                 </button>
@@ -143,7 +143,7 @@ const ProductTabs = ({
 
       <section>
         {activeTab === 3 && (
-          <section className="ml-[4rem] flex flex-wrap">
+          <section className="flex flex-wrap">
             {!data ? (
               <Loader />
             ) : (

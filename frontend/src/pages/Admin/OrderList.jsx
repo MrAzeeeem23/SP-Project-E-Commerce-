@@ -16,75 +16,69 @@ const OrderList = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-        <table className="container mx-auto">
+        <>
           <AdminMenu />
-
-          <thead className="w-full border">
-            <tr className="mb-[5rem]">
-              <th className="text-left pl-1">ITEMS</th>
-              <th className="text-left pl-1">ID</th>
-              <th className="text-left pl-1">USER</th>
-              <th className="text-left pl-1">DATA</th>
-              <th className="text-left pl-1">TOTAL</th>
-              <th className="text-left pl-1">PAID</th>
-              <th className="text-left pl-1">DELIVERED</th>
-              <th></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order._id}>
-                <td>
-                  <img
-                    src={order.orderItems[0].image}
-                    alt={order._id}
-                    className="w-[5rem] pt-4"
-                  />
-                </td>
-                <td>{order._id}</td>
-
-                <td>{order.user ? order.user.username : "N/A"}</td>
-
-                <td>
-                  {order.createdAt ? order.createdAt.substring(0, 10) : "N/A"}
-                </td>
-
-                <td>$ {order.totalPrice}</td>
-
-                <td className="py-2">
-                  {order.isPaid ? (
-                    <p className="p-1 text-center bg-green-400 w-[6rem] rounded-full">
-                      Completed
-                    </p>
-                  ) : (
-                    <p className="p-1 text-center bg-red-400 w-[6rem] rounded-full">
-                      Pending
-                    </p>
-                  )}
-                </td>
-
-                <td className="px-2 py-2">
-                  {order.isDelivered ? (
-                    <p className="p-1 text-center bg-green-400 w-[6rem] rounded-full">
-                      Completed
-                    </p>
-                  ) : (
-                    <p className="p-1 text-center bg-red-400 w-[6rem] rounded-full">
-                      Pending
-                    </p>
-                  )}
-                </td>
-
-                <td>
-                  <Link to={`/order/${order._id}`}>
-                    <button>More</button>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <div className="overflow-x-auto">
+            <table className="min-w-full">
+              <thead className="bg-gray-800 text-white">
+                <tr>
+                  <th className="w-1/5 p-3 text-left">ITEMS</th>
+                  <th className="w-1/5 p-3 text-left">ID</th>
+                  <th className="w-1/5 p-3 text-left">USER</th>
+                  <th className="w-1/5 p-3 text-left">DATE</th>
+                  <th className="w-1/5 p-3 text-left">TOTAL</th>
+                  <th className="w-1/5 p-3 text-left">PAID</th>
+                  <th className="w-1/5 p-3 text-left">DELIVERED</th>
+                  <th className="w-1/5 p-3 text-left"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id} className="border-b">
+                    <td className="p-3">
+                      <img
+                        src={order.orderItems[0].image}
+                        alt={order._id}
+                        className="w-16 h-16 object-cover"
+                      />
+                    </td>
+                    <td className="p-3">{order._id}</td>
+                    <td className="p-3">{order.user ? order.user.username : "N/A"}</td>
+                    <td className="p-3">{order.createdAt ? order.createdAt.substring(0, 10) : "N/A"}</td>
+                    <td className="p-3">${order.totalPrice}</td>
+                    <td className="p-3">
+                      {order.isPaid ? (
+                        <p className="text-center bg-green-400 text-white p-1 rounded-full">
+                          Completed
+                        </p>
+                      ) : (
+                        <p className="text-center bg-red-400 text-white p-1 rounded-full">
+                          Pending
+                        </p>
+                      )}
+                    </td>
+                    <td className="p-3">
+                      {order.isDelivered ? (
+                        <p className="text-center bg-green-400 text-white p-1 rounded-full">
+                          Completed
+                        </p>
+                      ) : (
+                        <p className="text-center bg-red-400 text-white p-1 rounded-full">
+                          Pending
+                        </p>
+                      )}
+                    </td>
+                    <td className="p-3">
+                      <Link to={`/order/${order._id}`}>
+                        <button className="bg-blue-500 text-white px-3 py-1 rounded">More</button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
     </>
   );

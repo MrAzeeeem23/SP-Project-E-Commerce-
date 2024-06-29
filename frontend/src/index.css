@@ -1,13 +1,22 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;  
+
+
+*{
+  font-family: "Poppins", sans-serif;
+}
 
 body {
-    background: #0f0f10;
-    color: #fff;
+    background: #1c1c1c;
+    color: rgb(255, 255, 255);
   }
+
+input{
+  stroke: none;
+  outline: none;
+}
   
-  input,
-  textarea {
-    color: #000;
-  }
+input, textarea {
+    color: rgb(0, 0, 0);
+}

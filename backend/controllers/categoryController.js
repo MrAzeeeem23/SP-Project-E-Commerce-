@@ -44,15 +44,17 @@ const updateCategory = asyncHandler(async (req, res) => {
   }
 });
 
-const removeCategory = asyncHandler(async (req, res) => {
-  try {
-    const removed = await Category.findByIdAndRemove(req.params.categoryId);
-    res.json(removed);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
+const removeCategory = asyncHandler(async(req, res) => {
+  const category = await Category.findById(req.params.id)
+
+  if(category){
+      await Category.deleteOne({_id: category._id})
+      res.json({ message: "Category removed"});
+  } else {
+      res.status(404)
+      throw new Error("User not found")
   }
-});
+})
 
 const listCategory = asyncHandler(async (req, res) => {
   try {

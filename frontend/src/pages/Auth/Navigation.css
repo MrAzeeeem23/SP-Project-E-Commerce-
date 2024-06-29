@@ -1,36 +1,28 @@
-#navigation-container {
-    width: 5%;
-    transition: width 0.3s ease-in-out;
-    overflow: hidden; /* Hide overflowing content during transition */
-  }
-  
-  #navigation-container:hover {
-    width: 15%;
-  }
-  
-  /* Initially hide nav-item-name */
-  .nav-item-name {
-    display: none;
-    transition: opacity 0.2s ease-in-out; /* Add opacity transition */
-  }
-  
-  #navigation-container:hover .nav-item-name {
-    display: block;
-    opacity: 1;
-  }
-  
-  .search-input {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out; /* Add opacity transition */
-  }
-  
-  #navigation-container:hover .search-input {
-    display: block;
-    opacity: 1;
-  }
-  
-  #navigation-container:hover .search-icon {
-    display: none;
-    transition: opacity 0.2s ease-in-out; /* Add opacity transition */
-  }
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #000;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #cd696e;
+}
+
+nav .container {
+  max-width: 1200px;
+  padding: 25px 0px;
+}
+
+#logo{
+    font-size: 20px;
+}

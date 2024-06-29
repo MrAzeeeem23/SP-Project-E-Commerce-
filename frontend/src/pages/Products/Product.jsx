@@ -3,7 +3,8 @@ import HeartIcon from "./HeartIcon";
 
 const Product = ({ product }) => {
   return (
-    <div className="w-[30rem] ml-[2rem] p-3 relative">
+    <div className="w-[25rem] mx-[2rem] p-3 relative transition hover:scale-105">
+      <Link to={`/product/${product._id}`}>
       <div className="relative">
         <img
           src={product.image}
@@ -12,17 +13,16 @@ const Product = ({ product }) => {
         />
         <HeartIcon product={product} />
       </div>
-
       <div className="p-4">
-        <Link to={`/product/${product._id}`}>
+        
           <h2 className="flex justify-between items-center">
             <div className="text-lg">{product.name}</div>
-            <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
+            <span>
               ₹ {product.price}
             </span>
           </h2>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 };

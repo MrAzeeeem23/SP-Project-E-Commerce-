@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetFilteredProductsQuery } from "../redux/api/productApiSlice";
 import { useFetchCategoriesQuery } from "../redux/api/categoryApiSlice";
-
 import {
   setCategories,
   setProducts,
@@ -10,6 +9,7 @@ import {
 } from "../redux/features/shop/shopSlice";
 import Loader from "../components/Loader";
 import ProductCard from "./Products/ProductCard";
+import "./Products/style.css"
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -80,12 +80,18 @@ const Shop = () => {
     setPriceFilter(e.target.value);
   };
 
+  const [Toggle, setToggle] = useState(false);
+
+  const HandleToggle = () => {
+    setToggle(!Toggle)
+  }
+
   return (
     <>
       <div className="container mx-auto">
         <div className="flex md:flex-row">
-          <div className="bg-[#151515] p-3 mt-2 mb-2">
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+          <div className={`bg-[#151515] p-3 mb-2 ${Toggle ? 'hidden' : ''} transition`}>
+            <h2 className=" h4 text-center py-2 bg-black rounded-xl mb-2">
               Filter by Categories
             </h2>
 
@@ -97,11 +103,11 @@ const Shop = () => {
                       type="checkbox"
                       id="red-checkbox"
                       onChange={(e) => handleCheck(e.target.checked, c._id)}
-                      className="w-4 h-4 text-pink-600 bg-gray-100 border-gray-300 rounded focus:ring-pink-500 dark:focus:ring-pink-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      className="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
 
                     <label
-                      htmlFor="pink-checkbox"
+                      htmlFor="red-checkbox"
                       className="ml-2 text-sm font-medium text-white dark:text-gray-300"
                     >
                       {c.name}
@@ -111,7 +117,7 @@ const Shop = () => {
               ))}
             </div>
 
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+            <h2 className="h4 text-center py-2 bg-black rounded-xl mb-2">
               Filter by Brands
             </h2>
 
@@ -124,7 +130,7 @@ const Shop = () => {
                       id={brand}
                       name="brand"
                       onChange={() => handleBrandClick(brand)}
-                      className="w-4 h-4 text-pink-400 bg-gray-100 border-gray-300 focus:ring-pink-500 dark:focus:ring-pink-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      className="w-4 h-4 text-red-400 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
 
                     <label
@@ -138,7 +144,7 @@ const Shop = () => {
               ))}
             </div>
 
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+            <h2 className="h4 text-center py-2 bg-black rounded-xl mb-2">
               Filer by Price
             </h2>
 
@@ -154,7 +160,7 @@ const Shop = () => {
 
             <div className="p-5 pt-0">
               <button
-                className="w-full border my-4"
+                className="w-full bg-red-600 p-2 uppercase my-4 rounded-xl"
                 onClick={() => window.location.reload()}
               >
                 Reset
@@ -163,10 +169,22 @@ const Shop = () => {
           </div>
 
           <div className="p-3">
-            <h2 className="h4 text-center mb-2">{products?.length} Products</h2>
-            <div className="flex flex-wrap">
+
+            <div className="flex justify-between">
+              <button className="bg-red-600 rounded-md p-2 flex-row" onClick={HandleToggle}>
+                <span className="p-2">Filter</span>
+                <span className={`material-symbols-outlined translate-y-1 ${Toggle ? "transfrom rotate-180" : " "} transition`}>menu_open</span>
+              </button>
+              <h2 className="h4 text-center mb-2">{products?.length} Products</h2>
+            </div>
+
+            <div className="flex flex-wrap justify-center item-center">
               {products.length === 0 ? (
-                <Loader />
+
+                <div className="flex justify-center item-center">
+                  <Loader />
+                </div>
+
               ) : (
                 products?.map((p) => (
                   <div className="p-3" key={p._id}>

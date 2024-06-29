@@ -31,11 +31,11 @@ const Cart = () => {
           </div>
         ) : (
           <>
-            <div className="flex flex-col w-[80%]">
+            <div className="flex flex-col w-[100%]">
               <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
 
               {cartItems.map((item) => (
-                <div key={item._id} className="flex items-enter mb-[1rem] pb-2">
+                <div key={item._id} className="flex justify-center items-center pb-2 mx-3">
                   <div className="w-[5rem] h-[5rem]">
                     <img
                       src={item.image}
@@ -45,7 +45,7 @@ const Cart = () => {
                   </div>
 
                   <div className="flex-1 ml-4">
-                    <Link to={`/product/${item._id}`} className="text-pink-500">
+                    <Link to={`/product/${item._id}`} className="text-red-500">
                       {item.name}
                     </Link>
 
@@ -73,7 +73,7 @@ const Cart = () => {
 
                   <div>
                     <button
-                      className="text-red-500 mr-[5rem]"
+                      className="text-red-500"
                       onClick={() => removeFromCartHandler(item._id)}
                     >
                       <FaTrash className="ml-[1rem] mt-[.5rem]" />
@@ -82,7 +82,7 @@ const Cart = () => {
                 </div>
               ))}
 
-              <div className="mt-8 w-[40rem]">
+              <div className="mt-8 w-[100%]">
                 <div className="p-4 rounded-lg">
                   <h2 className="text-xl font-semibold mb-2">
                     Items ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
@@ -96,7 +96,7 @@ const Cart = () => {
                   </div>
 
                   <button
-                    className="bg-pink-500 mt-4 py-2 px-4 rounded-full text-lg w-full"
+                    className="bg-red-500 mt-4 py-2 px-4 rounded-full text-lg w-[100%]"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >

@@ -1,13 +1,21 @@
 import { useSelector } from "react-redux";
 import { selectFavoriteProduct } from "../../redux/features/favorites/favoriteSlice";
+import { Link } from "react-router-dom";
 import Product from "./Product";
 
 const Favorites = () => {
   const favorites = useSelector(selectFavoriteProduct);
 
   return (
-    <div className="ml-[10rem]">
-      <h1 className="text-lg font-bold ml-[3rem] mt-[3rem]">
+   <>
+      <div>
+        <Link to="/"
+          className="text-white font-semibold hover:underline ml-3">
+          Go Back
+        </Link>
+      </div>
+    <div className="ml-auto flex flex-col justify-center items-center">
+      <h1 className="text-lg font-bold mt-[3rem]">
         FAVORITE PRODUCTS
       </h1>
 
@@ -17,6 +25,7 @@ const Favorites = () => {
         ))}
       </div>
     </div>
+  </> 
   );
 };
 

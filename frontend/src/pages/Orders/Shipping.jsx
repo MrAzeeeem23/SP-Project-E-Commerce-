@@ -93,20 +93,20 @@ const Shipping = () => {
               <label className="inline-flex items-center">
                 <input
                   type="radio"
-                  className="form-radio text-pink-500"
+                  className="form-radio text-red-500"
                   name="paymentMethod"
                   value="PayPal"
                   checked={paymentMethod === "PayPal"}
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 />
 
-                <span className="ml-2">PayPal or Credit Card</span>
+                <span className="ml-2">PhonePe or Credit Card</span>
               </label>
             </div>
           </div>
 
           <button
-            className="bg-pink-500 text-white py-2 px-4 rounded-full text-lg w-full"
+            className="bg-red-500 text-white py-2 px-4 rounded-full text-lg w-full"
             type="submit"
           >
             Continue
