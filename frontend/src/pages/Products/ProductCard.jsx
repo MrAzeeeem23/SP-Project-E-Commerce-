@@ -17,7 +17,7 @@ const ProductCard = ({ p }) => {
   };
 
   return (
-    <div className="relative bg-[#000000] rounded-lg shadow w-64 transition hover:scale-105">
+    <div className="relative bg-[#000000] rounded-lg shadow w-[19rem] transition hover:scale-105">
       <section className="relative">
         <Link to={`/product/${p._id}`}>
           <img 

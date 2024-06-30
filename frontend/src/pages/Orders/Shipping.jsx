@@ -95,8 +95,8 @@ const Shipping = () => {
                   type="radio"
                   className="form-radio text-red-500"
                   name="paymentMethod"
-                  value="PayPal"
-                  checked={paymentMethod === "PayPal"}
+                  value="RazorPay"
+                  checked={paymentMethod === "RazorPay"}
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 />
 

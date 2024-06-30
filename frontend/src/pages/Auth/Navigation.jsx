@@ -34,7 +34,7 @@ const Navigation = () => {
   return (
     <nav className="bg-black text-white top-0 left-0 w-full z-50">
       
-      <div className="container flex justify-between items-center p-4">
+      <div className="container flex justify-between items-center  p-4">
         
         <div className="flex space-x-6">
 

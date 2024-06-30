@@ -89,8 +89,8 @@ const Shop = () => {
   return (
     <>
       <div className="container mx-auto">
-        <div className="flex md:flex-row">
-          <div className={`bg-[#151515] p-3 mb-2 ${Toggle ? 'hidden' : ''} transition`}>
+        <div className="flex md:flex-row overflow-hidden">
+          <div className={`bg-[#151515] p-3 mb-2  ${Toggle ? 'block' : 'hidden'} transition`}>
             <h2 className=" h4 text-center py-2 bg-black rounded-xl mb-2">
               Filter by Categories
             </h2>
