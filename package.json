@@ -10,14 +10,14 @@
     "dev": "concurrently \"npm run frontend\" \"npm run backend\""
   },
   "keywords": [],
-  "author": "",
+  "author": "Azeem",
   "license": "ISC",
   "dependencies": {
     "@paypal/react-paypal-js": "^8.5.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
-    "cores": "^0.8.5",
+    "cores": "^0.8.0",
     "dotenv": "^16.4.5",
     "ecdsa-sig-formatter": "^1.0.11",
     "express": "^4.19.2",
