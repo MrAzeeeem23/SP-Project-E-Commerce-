@@ -93,7 +93,7 @@ const ProductDetails = () => {
             </div>
 
             <div className="flex flex-col justify-between">
-              <h2 className="text-4xl font-semibold">{product.name}</h2>
+              <h2 className="text-4xl font-semibold my-2">{product.name}</h2>
               <p className="my-4 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#B0B0B0]">
                 {product.description}
               </p>
@@ -122,14 +122,14 @@ const ProductDetails = () => {
                     <FaShoppingCart className="mr-2 text-white" /> Quantity:{" "}
                     {product.quantity}
                   </h1>
-                  <h1 className="flex items-center mb-6 w-[10rem]">
+                  <h1 className="flex items-center mb-2 w-[10rem]">
                     <FaBox className="mr-2 text-white" /> In Stock:{" "}
                     {product.countInStock}
                   </h1>
                 </div>
               </div>
 
-              <div className="flex justify-between flex-wrap">
+              <div className="flex justify-between flex-wrap my-3">
                 <Ratings
                   value={product.rating}
                   text={`${product.numReviews} reviews`}/>
@@ -139,7 +139,7 @@ const ProductDetails = () => {
                 <button
                   onClick={addToCartHandler}
                   disabled={product.countInStock === 0}
-                  className="bg-red-600 text-white py-3 w-10/12 px-4 rounded-lg">
+                  className="bg-red-600 text-white py-3 w-full px-4 rounded-lg">
                   Add To Cart 
                 </button>  
 
@@ -148,7 +148,7 @@ const ProductDetails = () => {
                     <select
                       value={qty}
                       onChange={(e) => setQty(e.target.value)}
-                      className="p-3 mr-12 ml-10 w-[6rem] rounded-lg text-black"
+                      className="p-3 mr-12 ml-4 w-[4rem] rounded-lg text-black"
                     >
                       {[...Array(product.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
@@ -160,7 +160,6 @@ const ProductDetails = () => {
                 )}
               </div>
             </div>
-
 
           </div>            
           <div className="mt-[5rem] container flex flex-wrap items-start justify-between mx-[1rem]">

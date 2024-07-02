@@ -48,11 +48,11 @@ const Register = () => {
   };
 
   return (
-    <section className="px-[10rem] flex item-center justify-center flex-wrap">
-      <div className="mr-[4rem] mt-[5rem]">
+    <section className="flex item-center justify-center flex-wrap">
+        <div className="mx-4 mb-20 mt-[1rem] bg-black p-10 rounded-xl w-[30rem]">
         <h1 className="text-[2rem] text-center font-semibold mb-4">Register</h1>
 
-        <form onSubmit={submitHandler} className="container w-[40rem]">
+        <form onSubmit={submitHandler} className="container">
           <div className="my-[2rem]">
             <label
               htmlFor="name"
@@ -124,7 +124,7 @@ const Register = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
+            className="bg-red-600 text-white px-4 py-2 rounded cursor-pointer  w-full"
           >
             {isLoading ? "Registering..." : "Register"}
           </button>

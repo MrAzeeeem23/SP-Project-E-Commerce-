@@ -168,9 +168,9 @@ const Shop = () => {
             </div>
           </div>
 
-          <div className="p-3">
+          <div className="p-3 w-full">
 
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <button className="bg-red-600 rounded-md p-2 flex-row" onClick={HandleToggle}>
                 <span className="p-2">Filter</span>
                 <span className={`material-symbols-outlined translate-y-1 ${Toggle ? "transfrom rotate-180" : " "} transition`}>menu_open</span>

@@ -3,7 +3,7 @@ import HeartIcon from "./HeartIcon";
 
 const Product = ({ product }) => {
   return (
-    <div className="w-[25rem] mx-[2rem] p-3 relative transition hover:scale-105">
+    <div className="w-[20rem] mx-[2rem] p-3 relative transition hover:scale-105">
       <Link to={`/product/${product._id}`}>
       <div className="relative">
         <img

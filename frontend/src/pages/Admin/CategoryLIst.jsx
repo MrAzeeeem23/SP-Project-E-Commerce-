@@ -91,7 +91,7 @@ const CategoryList = () => {
   };
 
   return (
-    <div className="ml-[10rem] flex flex-col md:flex-row">
+    <div className="flex flex-col justify-center md:flex-row">
       <AdminMenu />
       <div className="md:w-3/4 p-3">
         <div className="h-12">Manage Categories</div>

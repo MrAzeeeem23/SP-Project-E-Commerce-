@@ -32,7 +32,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="bg-black text-white top-0 left-0 w-full z-50">
+    <nav className="bg-[#0000] text-white top-0 left-0 w-full" style={{ zIndex: 9999 }}>
       
       <div className="container flex justify-between items-center  p-4">
         
@@ -99,22 +99,12 @@ const Navigation = () => {
           )}
 
           {dropdownOpen && userInfo && (
-            <ul className="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg">
+            <ul className="absolute z-[999] right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg transition-all">
               {userInfo.isAdmin && (
                 <>
                   <li>
                     <Link to="/admin/dashboard" className="block px-4 py-2 hover:bg-gray-100">
                       Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/admin/productlist" className="block px-4 py-2 hover:bg-gray-100">
-                      Products
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/admin/categorylist" className="block px-4 py-2 hover:bg-gray-100">
-                      Category
                     </Link>
                   </li>
                   <li>

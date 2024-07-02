@@ -16,8 +16,8 @@ const AllProducts = () => {
 
   return (
     <>
-      <div className="container mx-[9rem]">
-        <div className="flex flex-col  md:flex-row">
+      <div className="container">
+        <div className="flex flex-col md:flex-row">
           <div className="p-3">
             <div className="ml-[2rem] text-xl font-bold h-12">
               All Products ({products.length})
@@ -55,7 +55,7 @@ const AllProducts = () => {
                           to={`/admin/product/update/${product._id}`}
                           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                         >
-                          Update Product
+                          Update
                           <svg
                             className="w-3.5 h-3.5 ml-2"
                             aria-hidden="true"

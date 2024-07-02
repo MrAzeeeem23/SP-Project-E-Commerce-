@@ -4,7 +4,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Header from "../components/Header";
 import Product from "./Products/Product";
-import { useState } from "react";
+import MainHeader from "./Auth/MainHeader";
 
 const Home = () => {
   const { keyword } = useParams();
@@ -13,6 +13,7 @@ const Home = () => {
 
   return (
     <>
+      <MainHeader />
       {!keyword ? <Header /> : null}
       {isLoading ? (
         <Loader />

@@ -18,7 +18,7 @@ const OrderList = () => {
       ) : (
         <>
           <AdminMenu />
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto mt-10">
             <table className="min-w-full">
               <thead className="bg-gray-800 text-white">
                 <tr>

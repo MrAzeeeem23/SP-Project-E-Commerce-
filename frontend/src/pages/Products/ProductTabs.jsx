@@ -117,7 +117,7 @@ const ProductTabs = ({
       <section>
         {activeTab === 2 && (
           <>
-            <div>{product.reviews.length === 0 && <p>No Reviews</p>}</div>
+            <div className="text-center">{product.reviews.length === 0 && <p>No Reviews</p>}</div>
 
             <div>
               {product.reviews.map((review) => (

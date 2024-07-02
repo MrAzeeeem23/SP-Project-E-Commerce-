@@ -86,7 +86,8 @@ const Order = () => {
   ) : error ? (
     <Messsage variant="danger">{error.data.message}</Messsage>
   ) : (
-    <div className="container flex flex-col justify-center items-center ">
+    <div className="container flex flex-col justify-center items-center mx-2">
+      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Payment.</h1>
       <div className="md:w-2/3 pr-4">
         <div className="border gray-300 mt-5 pb-4 mb-5">
           {order.orderItems.length === 0 ? (
@@ -122,7 +123,7 @@ const Order = () => {
                       <td className="p-2 text-center">{item.qty}</td>
                       <td className="p-2 text-center">{item.price}</td>
                       <td className="p-2 text-center">
-                        $ {(item.qty * item.price).toFixed(2)}
+                        ₹ {(item.qty * item.price)}
                       </td>
                     </tr>
                   ))}

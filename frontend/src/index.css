@@ -5,10 +5,11 @@
 
 *{
   font-family: "Poppins", sans-serif;
+  margin: 0px;
 }
 
 body {
-    background: #1c1c1c;
+    background: #0f0f0f;
     color: rgb(255, 255, 255);
   }
 
@@ -19,4 +20,10 @@ input{
   
 input, textarea {
     color: rgb(0, 0, 0);
+}
+
+#MainText{
+  font-weight: 900;
+  letter-spacing: -6px;
+  line-height: 60px;
 }

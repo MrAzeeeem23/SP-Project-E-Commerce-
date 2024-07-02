@@ -43,6 +43,7 @@ const PlaceOrder = () => {
 
   return (
     <>
+      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Summary.</h1> 
       <ProgressSteps step1 step2 step3 />
 
       <div className="container mx-auto mt-8">
@@ -76,9 +77,9 @@ const PlaceOrder = () => {
                       <Link to={`/product/${item.product}`}>{item.name}</Link>
                     </td>
                     <td className="p-2">{item.qty}</td>
-                    <td className="p-2">{item.price.toFixed(2)}</td>
+                    <td className="p-2">{item.price}</td>
                     <td className="p-2">
-                      ₹ {(item.qty * item.price).toFixed(2)}
+                      ₹ {(item.qty * item.price)}
                     </td>
                   </tr>
                 ))}

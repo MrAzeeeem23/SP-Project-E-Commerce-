@@ -14,12 +14,11 @@ const Favorites = () => {
           Go Back
         </Link>
       </div>
-    <div className="ml-auto flex flex-col justify-center items-center">
-      <h1 className="text-lg font-bold mt-[3rem]">
-        FAVORITE PRODUCTS
-      </h1>
-
-      <div className="flex flex-wrap">
+    <div className="container mx-auto mt-8">
+      <div>
+        <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999] relative ">favorites.</h1>
+      </div>
+      <div className="flex flex-wrap justify-center items-center pb-2">
         {favorites.map((product) => (
           <Product key={product._id} product={product} />
         ))}

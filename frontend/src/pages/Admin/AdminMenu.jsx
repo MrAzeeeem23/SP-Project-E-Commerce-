@@ -13,8 +13,8 @@ const AdminMenu = () => {
     <>
       <button
         className={`${
-          isMenuOpen ? "right-2" : "right-7"
-        } bg-[#151515] p-3 fixed rounded-lg`}
+          isMenuOpen ? "right-7" : "right-7"
+        } bg-[#000000] p-3 fixed rounded-lg z-40`}
         onClick={toggleMenu}
       >
         {isMenuOpen ? (
