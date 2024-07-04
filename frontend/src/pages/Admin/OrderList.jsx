@@ -45,7 +45,7 @@ const OrderList = () => {
                     <td className="p-3">{order._id}</td>
                     <td className="p-3">{order.user ? order.user.username : "N/A"}</td>
                     <td className="p-3">{order.createdAt ? order.createdAt.substring(0, 10) : "N/A"}</td>
-                    <td className="p-3">${order.totalPrice}</td>
+                    <td className="p-3">₹{order.totalPrice}</td>
                     <td className="p-3">
                       {order.isPaid ? (
                         <p className="text-center bg-green-400 text-white p-1 rounded-full">

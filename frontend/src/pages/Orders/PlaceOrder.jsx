@@ -43,7 +43,7 @@ const PlaceOrder = () => {
 
   return (
     <>
-      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Summary.</h1> 
+      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999] mx-4">Summary.</h1> 
       <ProgressSteps step1 step2 step3 />
 
       <div className="container mx-auto mt-8">
@@ -93,7 +93,7 @@ const PlaceOrder = () => {
           <div className="flex justify-between flex-wrap p-8 bg-[#181818]">
             <ul className="text-lg">
               <li>
-                <span className="font-semibold mb-4">Items:</span> ₹₹
+                <span className="font-semibold mb-4">Items:</span> ₹
                 {cart.shippingPrice}
               </li>
               <li>

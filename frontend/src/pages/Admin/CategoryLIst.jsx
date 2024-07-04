@@ -44,6 +44,8 @@ const CategoryList = () => {
     }
   };
 
+   
+
   const handleUpdateCategory = async (e) => {
     e.preventDefault();
 

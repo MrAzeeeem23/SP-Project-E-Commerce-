@@ -11,9 +11,18 @@ const Navigation = () => {
   const { cartItems } = useSelector((state) => state.cart);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
   };
 
   const dispatch = useDispatch();
@@ -33,25 +42,31 @@ const Navigation = () => {
 
   return (
     <nav className="bg-[#0000] text-white top-0 left-0 w-full" style={{ zIndex: 9999 }}>
-      
-      <div className="container flex justify-between items-center  p-4">
-        
-        <div className="flex space-x-6">
+      <div className="container flex justify-between items-center p-4 mx-2">
+        <button onClick={toggleSidebar} className="md:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
 
-          <Link to="/" className="flex items-center transition-transform transform" >
-          <span class="material-symbols-outlined">home</span>
-            {/* <span className="ml-2 hidden md:block">Home</span> */}
+
+        <div className="hidden md:flex space-x-6">
+          <Link to="/" className="flex items-center transition-transform transform">
+            <span className="material-symbols-outlined">home</span>
           </Link>
 
           <Link to="/shop" className="flex items-center transition-transform transform">
-          <span class="material-symbols-outlined">local_mall</span>
-            {/* <span className="ml-2 hidden md:block">Shop</span> */}
+            <span className="material-symbols-outlined">local_mall</span>
           </Link>
 
           <Link to="/cart" className="flex items-center relative transition-transform transform">
-          <span class="material-symbols-outlined">shopping_cart</span>
-            
-            {/* <span className="ml-2 hidden md:block">Cart</span> */}
+            <span className="material-symbols-outlined">shopping_cart</span>
             {cartItems.length > 0 && (
               <span className="absolute -top-3 right-0 px-1 py-0 text-[13px] text-black bg-white rounded-full">
                 {cartItems.reduce((a, c) => a + c.qty, 0)}
@@ -59,15 +74,14 @@ const Navigation = () => {
             )}
           </Link>
 
-          <Link to="/favorite" className="flex items-center transition-transform transform ">
-          <span class="material-symbols-outlined">favorite</span>
-            {/* <span className="ml-2 hidden md:block">Favorites</span> */}
+          <Link to="/favorite" className="flex items-center transition-transform transform">
+            <span className="material-symbols-outlined">favorite</span>
           </Link>
         </div>
 
-        <div className="p-5">
+        <div className="flex-grow text-center">
           <Link to='/'>
-            <h1 id="logo">Store Beats</h1>
+            <h1 id="logo" className="text-center">Beats Store</h1>
           </Link>
         </div>
 
@@ -87,12 +101,12 @@ const Navigation = () => {
             </button>
           ) : (
             <div className="flex space-x-6">
-              <Link to="/login" className="flex items-center transition-transform ">
-              <span class="material-symbols-outlined">login</span>
+              <Link to="/login" className="flex items-center transition-transform">
+                <span className="material-symbols-outlined">login</span>
                 <span className="ml-2 hidden md:block">Login</span>
               </Link>
-              <Link to="/register" className="flex items-center transition-transform ">
-              <span class="material-symbols-outlined">person_add</span>
+              <Link to="/register" className="flex items-center transition-transform">
+                <span className="material-symbols-outlined">person_add</span>
                 <span className="ml-2 hidden md:block">Register</span>
               </Link>
             </div>
@@ -105,6 +119,16 @@ const Navigation = () => {
                   <li>
                     <Link to="/admin/dashboard" className="block px-4 py-2 hover:bg-gray-100">
                       Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/admin/productlist" className="block px-4 py-2 hover:bg-gray-100">
+                      Product
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/admin/categorylist" className="block px-4 py-2 hover:bg-gray-100">
+                      Category
                     </Link>
                   </li>
                   <li>
@@ -132,6 +156,57 @@ const Navigation = () => {
             </ul>
           )}
         </div>
+      </div>
+
+      <div
+        className={`fixed inset-0 z-[999] bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out ${
+          sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={closeSidebar}
+      >
+        <div
+          className={`fixed left-0 top-0 bottom-0 w-64 bg-black p-4 shadow-lg transform transition-transform duration-300 ease-in-out ${
+            sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex justify-between items-center mb-4 mt-10 text-[4rem]">
+            <h2 className="text-4xl font-bold uppercase tracking-[-4px]">Menu</h2>
+            <button onClick={toggleSidebar}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <Link to="/" className="block px-4 py-2" onClick={closeSidebar}>
+            <span className="material-symbols-outlined">home</span>
+            <span className="relative -top-[5px] ml-2">Home</span>
+          </Link>
+          <Link to="/shop" className="block px-4 py-2" onClick={closeSidebar}>
+            <span className="material-symbols-outlined">local_mall</span> 
+            <span className="relative -top-[5px] ml-2">Shop</span>
+          </Link>
+          <Link to="/cart" className="block px-4 py-2 relative" onClick={closeSidebar}>
+            <span className="material-symbols-outlined">shopping_cart</span>
+            <span className="relative -top-[5px] ml-2">Cart</span>
+            {cartItems.length > 0 && (
+              <span className="absolute right-2 top-2 px-2 py-1 text-[13px] text-black bg-white rounded-full">
+                {cartItems.reduce((a, c) => a + c.qty, 0)}
+              </span>
+            )}
+          </Link>
+          <Link to="/favorite" className="block px-4 py-2" onClick={closeSidebar}>
+            <span className="material-symbols-outlined">favorite</span> 
+            <span className="relative  -top-[5px] ml-2">Favorite</span>
+          </Link>
+        </div>
+        
       </div>
     </nav>
   );
