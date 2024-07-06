@@ -38,7 +38,7 @@ const Shipping = () => {
   }, [navigate, shippingAddress]);
 
   return (
-    <div className="container mx-1 mt-10">
+    <div className="mx-1 mt-10">
       <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999] mx-4">Shipping.</h1> 
         <ProgressSteps step1 step2 />
       <div className="mt-[5rem] flex justify-around items-center flex-wrap">

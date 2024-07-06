@@ -79,9 +79,9 @@ const Navigation = () => {
           </Link>
         </div>
 
-        <div className="flex-grow text-center">
+        <div className="flex flex-grow-20 text-center justify-center items-center">
           <Link to='/'>
-            <h1 id="logo" className="text-center">Beats Store</h1>
+            <h1 id="logo" className="text-center">BS</h1>
           </Link>
         </div>
 

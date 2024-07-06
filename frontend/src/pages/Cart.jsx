@@ -26,8 +26,13 @@ const Cart = () => {
     <>
       <div className="container flex justify-around items-start flex-wrap mx-auto mt-8">
         {cartItems.length === 0 ? (
-          <div>
-            Your cart is empty <Link to="/shop">Go To Shop</Link>
+          <div className="flex flex-col justify-center items-center">
+            Your cart is empty  
+            <div className="bg-red-600 p-3 m-3 rounded-full hover:bg-red-900">
+            <Link to="/shop">Go To Shop</Link>
+            </div>
+            <img className="w-40 rounded-full my-6 " src="https://plus.unsplash.com/premium_photo-1681487985079-b299ac8ba1df?q=80&w=1357&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="emptycart" />
+            Oops!
           </div>
         ) : (
           <>

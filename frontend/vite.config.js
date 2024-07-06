@@ -5,10 +5,11 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
+    //  host: true is used to run local host on your divice
     host: true,
     proxy: {
-      "/api/": "http://localhost:5000",
-      "/uploads/": "http://localhost:5000",
+      "/api/": "https://sp-project-e-commerce.onrender.com/",
+      "/uploads/": "https://sp-project-e-commerce.onrender.com/",
     },
   },
 });

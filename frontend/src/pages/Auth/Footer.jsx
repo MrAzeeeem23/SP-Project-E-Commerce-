@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-10 mt-[10rem]">
       <div className="container mx-auto flex flex-wrap justify-between">
-        <span id='MainText' className="text-white text-[100px] m-3">BEATS <br /> STORE</span>
+        <span id='MainText' className="text-white text-[100px] m-3 hover:text-red-600 hover:rotate-90 transition">BEATS <br /> STORE</span>
         <div className="w-full sm:w-1/3 mb-6 sm:mb-0 m-4">
           <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
           <ul className="flex space-x-4">
@@ -14,11 +14,12 @@ const Footer = () => {
             <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a></li>
           </ul>
         </div>
-        
       </div>
+      <hr />
       <div className="mt-10 text-center">
         <p>&copy; {new Date().getFullYear()} Store Beats. All rights reserved.</p>
-        <h1>Create By: Pathan AzeemKhan</h1>
+        <h1>Create By: Pathan AzeemKhan</h1> 
+        <Link to={'https://github.com/MrAzeeeem23'}><span className='hover:text-red-600 transition'>GitHub</span></Link>
       </div>
     </footer>
   );
