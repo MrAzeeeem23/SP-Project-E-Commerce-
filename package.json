@@ -13,7 +13,6 @@
   "author": "Azeem",
   "license": "ISC",
   "dependencies": {
-    "@paypal/react-paypal-js": "^8.5.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
