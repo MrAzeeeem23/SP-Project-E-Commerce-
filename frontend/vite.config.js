@@ -12,4 +12,9 @@ export default defineConfig({
       "/uploads/": "https://sp-project-e-commerce.onrender.com/",
     },
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
 });
