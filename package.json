@@ -17,6 +17,7 @@
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
     "cores": "^0.8.5",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ecdsa-sig-formatter": "^1.0.11",
     "express": "^4.19.2",
