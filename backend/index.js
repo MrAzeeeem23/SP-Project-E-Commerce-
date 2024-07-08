@@ -1,8 +1,8 @@
-// Import packages
 import path from 'path';
 import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import cors from 'cors'; // Import cors package
 
 import connectDB from './config/db.js';
 import userRoute from './routes/userRoutes.js';
@@ -19,13 +19,18 @@ connectDB();
 
 const app = express();
 
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://your-netlify-site.netlify.app'],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Define routes
 app.use('/api/users', userRoute);
-app.use('/api/category', categoryRoutes)
+app.use('/api/category', categoryRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/uploads", upload);
 app.use("/api/orders", orderRoutes);
