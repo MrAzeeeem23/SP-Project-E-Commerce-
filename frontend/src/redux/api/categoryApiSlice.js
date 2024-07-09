@@ -39,4 +39,4 @@ export const {
   useFetchCategoriesQuery,
 } = categoryApiSlice;
 
-console.log(categoryApiSlice)
+// console.log(categoryApiSlice)
