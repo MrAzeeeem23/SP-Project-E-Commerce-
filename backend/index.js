@@ -20,7 +20,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://your-netlify-site.netlify.app'],
+  origin: ['https://sp-project-e-commerce.onrender.com', 'https://celadon-meerkat-2f80d7.netlify.app'],
   credentials: true
 }));
 

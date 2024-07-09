@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <ToastContainer />
-      
       <main className='py-3'>
         <Navigation />
         <Outlet />
