@@ -19,10 +19,9 @@ connectDB();
 
 const app = express();
 
-app.use(cors({
-  origin: ['https://sp-project-e-commerce.onrender.com', 'https://celadon-meerkat-2f80d7.netlify.app'],
-  credentials: true
-}));
+const cors = require('cors');
+app.use(cors({ origin: 'https://beatsstore.netlify.app/' }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

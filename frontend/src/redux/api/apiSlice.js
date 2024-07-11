@@ -9,4 +9,4 @@ export const apiSlice = createApi({
   endpoints: () => ({}),
 });
 
-// console.log(baseQuery)
+console.log(BASE_URL)
