@@ -19,7 +19,7 @@ connectDB();
 
 const app = express();
 
-app.use(cors({ origin: 'https://beatsstore.netlify.app/' }));
+app.use(cors({ origin: 'https://6690337fcd41fd3cfbef75e1--beatsstore.netlify.app/' }));
 
 
 app.use(express.json());
