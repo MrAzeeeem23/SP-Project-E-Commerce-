@@ -2,7 +2,6 @@ import path from 'path';
 import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import cors from 'cors'; // Import cors package
 
 import connectDB from './config/db.js';
 import userRoute from './routes/userRoutes.js';
@@ -18,9 +17,6 @@ console.log(`Port: ${port}`);
 connectDB();
 
 const app = express();
-
-app.use(cors({ origin: 'https://6690337fcd41fd3cfbef75e1--beatsstore.netlify.app/' }));
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
