@@ -30,7 +30,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/api/products/top', (req, res) => {
+app.get('/api', (req, res) => {
     res.json({ message: 'This is CORS-enabled for all origins!' });
 });
 
