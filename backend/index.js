@@ -33,10 +33,12 @@ app.use("/api/orders", orderRoutes);
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
-app.get('/api/products/top', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://beatsstore.netlify.app');
-    res.json({ message: 'This is CORS-enabled for a specific origin!' });
-});
+app.use(cors());
+
+// app.get('/api/products/top', (req, res) => {
+//     res.setHeader('Access-Control-Allow-Origin', 'https://beatsstore.netlify.app');
+//     res.json({ message: 'This is CORS-enabled for a specific origin!' });
+// });
 
 app.get('/', (req, res) => {
   res.send('Hello world');
