@@ -30,9 +30,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/api', (req, res) => {
-    res.json({ message: 'This is CORS-enabled for all origins!' });
-});
+// app.get('/api', (req, res) => {
+//     res.json({ message: 'This is CORS-enabled for all origins!' });
+// });
 
 
 // Define routes
