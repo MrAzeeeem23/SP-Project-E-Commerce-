@@ -17,17 +17,17 @@ import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 
 router
   .route("/")
-  .post(authenticate, createOrder)
-  .get(authenticate, authorizeAdmin, getAllOrders);
+  .post(createOrder)
+  .get(authorizeAdmin, getAllOrders);
 
-router.route("/mine").get(authenticate, getUserOrders);
+router.route("/mine").get(getUserOrders);
 router.route("/total-orders").get(countTotalOrders);
 router.route("/total-sales").get(calculateTotalSales);
 router.route("/total-sales-by-date").get(calcualteTotalSalesByDate);
-router.route("/:id").get(authenticate, findOrderById);
-router.route("/:id/pay").put(authenticate, markOrderAsPaid);
+router.route("/:id").get(findOrderById);
+router.route("/:id/pay").put(markOrderAsPaid);
 router
   .route("/:id/deliver")
-  .put(authenticate, authorizeAdmin, markOrderAsDelivered);
+  .put(authorizeAdmin, markOrderAsDelivered);
 
 export default router;
