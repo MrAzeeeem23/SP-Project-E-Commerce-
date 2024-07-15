@@ -11,6 +11,8 @@ import productRoutes from "./routes/productRoutes.js";
 import upload from './routes/uploadRoutes.js'
 import orderRoutes from "./routes/orderRoutes.js";
 
+// import { authenticate, authorizeAdmin } from "./middlewares/authMiddleware.js";
+
 dotenv.config();
 
 const port = process.env.PORT || 5000;
@@ -34,7 +36,9 @@ app.use(cookieParser());
 
 app.use(cors({
   origin: 'https://beatsstore.netlify.app', 
-  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  credentials: true, // Allow cookies to be sent
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Define routes
