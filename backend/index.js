@@ -21,8 +21,6 @@ connectDB();
 
 const app = express();
 
-
-
 // app.use((req, res, next) => {
 //     res.setHeader('Access-Control-Allow-Origin', 'https://beatsstore.netlify.app'); // Allow all origins
 //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
