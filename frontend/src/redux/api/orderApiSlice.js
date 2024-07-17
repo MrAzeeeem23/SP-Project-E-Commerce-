@@ -8,6 +8,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         url: ORDERS_URL,
         method: "POST",
         body: order,
+        credentials: true
       }),
     }),
 

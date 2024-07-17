@@ -9,4 +9,3 @@ export const apiSlice = createApi({
   endpoints: () => ({}),
 });
 
-console.log(BASE_URL)

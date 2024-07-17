@@ -2,7 +2,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import cors from 'cors'; // Import cors package
+
 
 import connectDB from './config/db.js';
 import userRoute from './routes/userRoutes.js';
@@ -19,8 +19,7 @@ connectDB();
 
 const app = express();
 
-app.use(cors({ origin: 'https://6690337fcd41fd3cfbef75e1--beatsstore.netlify.app/' }));
-
+// app.use(express.static('dist'))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,8 +35,9 @@ app.use("/api/orders", orderRoutes);
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
+
 app.get('/', (req, res) => {
   res.send('Hello world');
 });
 
-app.listen(port, () => console.log(`Server is running on port: ${port}`));
+app.listen(port, () => console.log(`Server is running on port: http://localhost:${port}`));
