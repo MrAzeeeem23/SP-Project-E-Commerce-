@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -9,6 +9,10 @@ import {
   useGetOrderDetailsQuery,
   usePayOrderMutation,
 } from "../../redux/api/orderApiSlice";
+import {useGetProductByIdQuery} from "../../redux/api/productApiSlice";
+
+
+
 
 const Order = () => {
   const { id: orderId } = useParams();
@@ -81,20 +85,29 @@ const Order = () => {
     refetch();
   };
 
+  const params = useParams();
+  
+  const { data: productData } = useGetProductByIdQuery(params._id);
+  
+  const [stock, setStock] = useState(productData?.countInStock);
+  
+  console.log(productData)
+  
+
   return isLoading ? (
     <Loader />
   ) : error ? (
     <Messsage variant="danger">{error.data.message}</Messsage>
-  ) : (
+  ) : (    
     <div className="flex flex-col justify-center items-center mx-2">
       <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999] mx-4">Payment.</h1>
-      <div className="md:w-2/3 pr-4">
-        <div className="border gray-300 mt-5 pb-4 mb-5">
+      <div className="pr-4">
+        <div className="border border-gray-300 mt-5 mb-5 w-[auto]">
           {order.orderItems.length === 0 ? (
             <Messsage>Order is empty</Messsage>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-[80%]">
+              <table className="w-auto">
                 <thead className="border-b-2">
                   <tr>
                     <th className="p-2">Image</th>
@@ -200,7 +213,7 @@ const Order = () => {
         )}
 
         {loadingDeliver && <Loader />}
-        {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+        {userInfo && userInfo.isAdmin &&(
           <div>
             <button
               type="button"

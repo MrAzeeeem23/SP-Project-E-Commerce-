@@ -63,6 +63,12 @@ export const productApiSlice = apiSlice.injectEndpoints({
       providesTags: ["Product"],
     }),
 
+    updateStock: builder.mutation({
+      query: (productId) => ({
+
+      })
+    }),
+
     createReview: builder.mutation({
       query: (data) => ({
         url: `${PRODUCT_URL}/${data.productId}/reviews`,

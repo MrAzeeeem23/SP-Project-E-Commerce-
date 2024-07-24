@@ -150,7 +150,7 @@ const Shop = () => {
 
             <div className="p-5 w-[15rem]">
               <input
-                type="text"
+                type="number"
                 placeholder="Enter Price"
                 value={priceFilter}
                 onChange={handlePriceChange}

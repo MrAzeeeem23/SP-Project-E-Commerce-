@@ -104,7 +104,7 @@ const Profile = () => {
               </button>
 
               <Link
-                to="/user-orders"
+                to="/userorder"
                 className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
               >
                 My Orders

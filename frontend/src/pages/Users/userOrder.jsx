@@ -15,7 +15,7 @@ const UserOrder = () => {
       ) : error ? (
         <Message variant="danger">{error?.data?.error || error.error}</Message>
       ) : (
-        <table className="w-full">
+        <table className="w-full rounded-xl">
           <thead>
             <tr>
               <td className="py-2">IMAGE</td>
@@ -39,7 +39,7 @@ const UserOrder = () => {
 
                 <td className="py-2">{order._id}</td>
                 <td className="py-2">{order.createdAt.substring(0, 10)}</td>
-                <td className="py-2">$ {order.totalPrice}</td>
+                <td className="py-2">₹ {order.totalPrice}</td>
 
                 <td className="py-2">
                   {order.isPaid ? (

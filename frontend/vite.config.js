@@ -11,12 +11,12 @@ export default defineConfig({
     //  host: true is used to run local host on your divice
     host: true,
     proxy: {
-      "/api/": "https://sp-project-e-commerce.onrender.com/",
-      "/uploads/": "https://sp-project-e-commerce.onrender.com/",     
+      // "/api/": "https://sp-project-e-commerce.onrender.com/",
+      // "/uploads/": "https://sp-project-e-commerce.onrender.com/",     
       
       // local
-      // "/api/": "http://localhost:5000",
-      // "/uploads/": "http://localhost:5000",
+      "/api/": "http://localhost:5000",
+      "/uploads/": "http://localhost:5000",
     },
   },
 });

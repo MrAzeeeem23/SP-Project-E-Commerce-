@@ -69,7 +69,7 @@ const UserList = () => {
       ) : (
         <div className="flex flex-col lg:flex-row">
           <AdminMenu />
-          <div className="w-full lg:w-4/5 mx-auto overflow-x-auto">
+          <div className="w-full lg:w-4/5 mx-auto overflow-x-auto ">
             <table className="min-w-full border rounded-lg">
               <thead>
                 <tr className="bg-gray-800 text-white">

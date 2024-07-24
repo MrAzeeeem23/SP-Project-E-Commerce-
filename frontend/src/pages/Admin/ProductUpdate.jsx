@@ -26,6 +26,8 @@ const AdminProductUpdate = () => {
 
   const navigate = useNavigate();
 
+  // console.log(stock)
+
   const { data: categories = [] } = useFetchCategoriesQuery();
 
   const [uploadProductImage] = useUploadProductImageMutation();

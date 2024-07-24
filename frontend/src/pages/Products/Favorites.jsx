@@ -8,14 +8,14 @@ const Favorites = () => {
 
   return (
    <>
-      <div>
+     
+    <div className="container mx-auto mt-8">
+      <div> <div>
         <Link to="/"
           className="text-white font-semibold hover:underline ml-3">
           Go Back
         </Link>
       </div>
-    <div className="container mx-auto mt-8">
-      <div>
         <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999] relative ">favorites.</h1>
       </div>
       <div className="flex flex-wrap justify-center items-center pb-2">

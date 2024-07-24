@@ -140,7 +140,7 @@ const ProductDetails = () => {
                   onClick={addToCartHandler}
                   disabled={product.countInStock === 0}
                   className="bg-red-600 text-white py-3 w-full px-4 rounded-lg">
-                  Add To Cart 
+                  {product.countInStock === 0 ? "Out Of Stock": "Add To Cart"}
                 </button>  
 
                 {product.countInStock > 0 && (

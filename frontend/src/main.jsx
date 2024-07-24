@@ -34,6 +34,7 @@ import Shop from "./pages/Shop.jsx";
 import Shipping from "./pages/Orders/Shipping.jsx";
 import PlaceOrder from "./pages/Orders/PlaceOrder.jsx";
 import Order from "./pages/Orders/Order.jsx";
+import UserOrder from "./pages/Users/userOrder";
 import OrderList from "./pages/Admin/OrderList.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 
@@ -54,6 +55,7 @@ const router = createBrowserRouter(
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/order/:id" element={<Order />} />
+        <Route path="/userorder/" element={<UserOrder />} />
       </Route>
 
       <Route path="/admin" element={<AdminRoute />}>

@@ -23,6 +23,14 @@ const AdminDashboard = () => {
       },
       tooltip: {
         theme: "dark",
+        x: {
+          format: 'dd/MM/yy'
+        },
+        y: {
+          formatter: function (value) {
+            return `₹ ${value.toFixed(2)}`;
+          }
+        }
       },
       colors: ["#00E396"],
       dataLabels: {
@@ -32,14 +40,14 @@ const AdminDashboard = () => {
         curve: "smooth",
       },
       title: {
-        text: "Sales Trend",
+        text: "Sales Trend Over Time",
         align: "left",
       },
       grid: {
         borderColor: "#ccc",
       },
       markers: {
-        size: 1,
+        size: 5,
       },
       xaxis: {
         categories: [],
@@ -47,12 +55,12 @@ const AdminDashboard = () => {
           text: "Date",
         },
       },
-      yaxis: {
+      yaxis: [{
         title: {
-          text: "Sales",
+          text: "Sales (₹)",
         },
         min: 0,
-      },
+      }],
       legend: {
         position: "top",
         horizontalAlign: "right",
@@ -60,14 +68,37 @@ const AdminDashboard = () => {
         offsetY: -25,
         offsetX: -5,
       },
+      annotations: {
+        yaxis: [
+          {
+            y: 0,
+            borderColor: "#00E396",
+            label: {
+              borderColor: "#00E396",
+              style: {
+                color: "#fff",
+                background: "#00E396",
+              },
+              text: "Average Sales",
+            },
+          },
+        ],
+      },
     },
-    series: [{ name: "Sales", data: [] }],
+    series: [
+      {
+        name: "Sales",
+        data: [],
+      },
+    ],
   });
 
   useEffect(() => {
     if (salesDetail) {
       const categories = salesDetail.map((item) => item._id);
       const data = salesDetail.map((item) => item.totalSales);
+
+      const averageSales = data.reduce((acc, val) => acc + val, 0) / data.length;
 
       setChartData((prevState) => ({
         ...prevState,
@@ -76,6 +107,22 @@ const AdminDashboard = () => {
           xaxis: {
             ...prevState.options.xaxis,
             categories: categories,
+          },
+          annotations: {
+            yaxis: [
+              {
+                y: averageSales,
+                borderColor: "#FEB019",
+                label: {
+                  borderColor: "#FEB019",
+                  style: {
+                    color: "#fff",
+                    background: "#FEB019",
+                  },
+                  text: `Average Sales: ₹${averageSales.toFixed(2)}`,
+                },
+              },
+            ],
           },
         },
         series: [
@@ -107,7 +154,7 @@ const AdminDashboard = () => {
 
           <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
             <div className="font-bold rounded-full w-[3rem] bg-white text-center p-3">
-            👤
+              👤
             </div>
 
             <p className="mt-5">Customers</p>
