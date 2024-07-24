@@ -11,6 +11,7 @@ const SmallProduct = ({ product }) => {
           src={product.image}
           alt={product.name}
           className="h-auto rounded"
+          style={{ height: "300px", objectFit: "cover" }}
         />
         <HeartIcon product={product} />
       </div>

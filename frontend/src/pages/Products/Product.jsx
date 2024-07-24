@@ -10,6 +10,7 @@ const Product = ({ product }) => {
           src={product.image}
           alt={product.name}
           className="w-[30rem] rounded"
+          style={{ height: "300px", objectFit: "cover" }}
         />
         <HeartIcon product={product} />
       </div>

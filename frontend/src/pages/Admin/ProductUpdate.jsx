@@ -15,18 +15,16 @@ const AdminProductUpdate = () => {
 
   const { data: productData } = useGetProductByIdQuery(params._id);
 
-  const [image, setImage] = useState(productData?.image || "");
-  const [name, setName] = useState(productData?.name || "");
-  const [description, setDescription] = useState(productData?.description || "");
-  const [price, setPrice] = useState(productData?.price || "");
-  const [category, setCategory] = useState(productData?.category || "");
-  const [quantity, setQuantity] = useState(productData?.quantity || "");
-  const [brand, setBrand] = useState(productData?.brand || "");
-  const [stock, setStock] = useState(productData?.countInStock);
+  const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [brand, setBrand] = useState("");
+  const [stock, setStock] = useState("");
 
   const navigate = useNavigate();
-
-  // console.log(stock)
 
   const { data: categories = [] } = useFetchCategoriesQuery();
 
@@ -79,7 +77,7 @@ const AdminProductUpdate = () => {
         countInStock: stock,
       };
 
-      const data = await updateProduct({ productId: params._id, ...formData });
+      const data = await updateProduct({ productId: params._id, ...formData }).unwrap();
 
       if (data?.error) {
         toast.error(data.error, {
@@ -107,7 +105,7 @@ const AdminProductUpdate = () => {
       const answer = window.confirm("Are you sure you want to delete this product?");
       if (!answer) return;
 
-      const { data } = await deleteProduct(params._id);
+      const { data } = await deleteProduct(params._id).unwrap();
       toast.success(`"${data.name}" has been deleted`, {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 2000,
