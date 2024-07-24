@@ -17,7 +17,7 @@ import AdminRoute from "./pages/Admin/AdminRoute.jsx";
 import Profile from "./pages/Users/Profile.jsx";
 import UserList from "./pages/Admin/UserList.jsx";
 
-import CategoryList from './pages/Admin/CategoryList.jsx';
+import CategoryList from './pages/Admin/CategoryLIst.jsx';
 
 
 import ProductList from "./pages/Admin/ProductList.jsx";
