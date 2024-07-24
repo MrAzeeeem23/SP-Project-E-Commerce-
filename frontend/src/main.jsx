@@ -23,13 +23,13 @@ import CategoryList from './pages/Admin/CategoryList.jsx';
 import ProductList from "./pages/Admin/ProductList.jsx";
 import AllProducts from "./pages/Admin/AllProductus.jsx";
 import ProductUpdate from "./pages/Admin/ProductUpdate.jsx";
-
-import Home from "./pages/Home.jsx";
 import Favorites from "./pages/Products/Favorites.jsx";
 import ProductDetails from "./pages/Products/ProductDetails.jsx";
 
+import Home from "./pages/Home.jsx";
 import Cart from "./pages/Cart.jsx";
 import Shop from "./pages/Shop.jsx";
+import Contact from "./pages/Contact";
 
 import Shipping from "./pages/Orders/Shipping.jsx";
 import PlaceOrder from "./pages/Orders/PlaceOrder.jsx";
@@ -48,6 +48,7 @@ const router = createBrowserRouter(
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/shop" element={<Shop />} />
+      <Route path="/contact" element={<Contact />} />
 
       {/* Registered users */}
       <Route path="" element={<PrivateRoute />}>

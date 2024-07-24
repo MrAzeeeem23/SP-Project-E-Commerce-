@@ -77,6 +77,7 @@ const Navigation = () => {
           <Link to="/favorite" className="flex items-center transition-transform transform">
             <span className="material-symbols-outlined">favorite</span>
           </Link>
+          
         </div>
 
         <div className="flex flex-grow-20 text-center justify-center items-center">
@@ -147,7 +148,14 @@ const Navigation = () => {
                 <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">
                   Profile
                 </Link>
+              </li>              
+
+              <li>
+                <Link to="/contact" className="block px-4 py-2 hover:bg-gray-100">
+                  Contact
+                </Link>
               </li>
+
               <li>
                 <button onClick={logoutHandler} className="block w-full px-4 py-2 text-left hover:bg-gray-100">
                   Logout
