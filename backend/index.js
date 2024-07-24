@@ -2,11 +2,6 @@ import path from 'path';
 import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-<<<<<<< HEAD
-
-=======
-import cors from 'cors';
->>>>>>> b173de1ab97dcd8f9f928514d7eb3a08da55145a
 
 import connectDB from './config/db.js';
 import userRoute from './routes/userRoutes.js';
@@ -24,17 +19,6 @@ console.log(`Port: ${port}`);
 connectDB();
 
 const app = express();
-
-<<<<<<< HEAD
-// app.use(express.static('dist'))
-=======
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', 'https://beatsstore.netlify.app'); // Allow all origins
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//     next();
-// });
->>>>>>> b173de1ab97dcd8f9f928514d7eb3a08da55145a
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
