@@ -10,7 +10,6 @@ lerna-debug.log*
 node_modules
 # ignore vite congig
 vite.config.js
-vite.config.js
 dist
 dist-ssr
 *.local
