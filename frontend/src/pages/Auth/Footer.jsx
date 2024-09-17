@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-10 mt-[10rem]">
       <div className="container mx-auto flex flex-wrap justify-between">
         <span id='MainText' className="text-white text-[100px] m-3 hover:text-red-600 hover:rotate-90 transition">
           <Link to='/'>
-          BEATS <br /> STORE
+          <span className=''>BEATS <br /> STORE</span>
           </Link>
           </span>
         <div className="w-full sm:w-1/3 mb-6 sm:mb-0 m-4">

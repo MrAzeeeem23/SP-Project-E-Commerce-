@@ -2,6 +2,7 @@ import asyncHandler from "../middlewares/asyncHandler.js";
 import Product from "../models/productModel.js";
 
 const addProduct = asyncHandler(async (req, res) => {
+  console.log(req.fields)
   try {
     const { name, description, price, category, quantity, brand } = req.fields;
 
@@ -15,7 +16,7 @@ const addProduct = asyncHandler(async (req, res) => {
         return res.json({ error: "Description is required" });
       case !price:
         return res.json({ error: "Price is required" });
-      case !category:
+      case category:
         return res.json({ error: "Category is required" });
       case !quantity:
         return res.json({ error: "Quantity is required" });
@@ -31,6 +32,7 @@ const addProduct = asyncHandler(async (req, res) => {
 });
 
 const updateProductDetails = asyncHandler(async (req, res) => {
+  console.log(req.fields)
   try {
     const { name, description, price, category, quantity, brand } = req.fields;
 
@@ -44,7 +46,7 @@ const updateProductDetails = asyncHandler(async (req, res) => {
         return res.json({ error: "Description is required" });
       case !price:
         return res.json({ error: "Price is required" });
-      case !category:
+      case category:
         return res.json({ error: "Category is required" });
       case !quantity:
         return res.json({ error: "Quantity is required" });
@@ -56,7 +58,6 @@ const updateProductDetails = asyncHandler(async (req, res) => {
       { new: true }
     );
 
-    await product.save();
 
     res.json(product);
   } catch (error) {

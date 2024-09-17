@@ -50,7 +50,7 @@ const Register = () => {
   return (
     <section className="flex item-center justify-center flex-wrap">
         <div className="mx-4 mb-20 mt-[1rem] bg-black p-10 rounded-xl w-[30rem]">
-        <h1 className="text-[2rem] text-center font-semibold mb-4">Register</h1>
+        <h1 className="text-[2rem] text-center font-semibold mb-4">Sign Up</h1>
 
         <form onSubmit={submitHandler} className="container">
           <div className="my-[2rem]">

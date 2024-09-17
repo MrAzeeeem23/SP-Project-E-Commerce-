@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/features/cart/cartSlice";
 import { toast } from "react-toastify";
 import HeartIcon from "./HeartIcon";
+import Ratings from "./Ratings";
 
 const ProductCard = ({ p }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const ProductCard = ({ p }) => {
   };
 
   return (
-    <div className="relative bg-[#000000] rounded-lg shadow w-[19rem] transition hover:scale-105">
+    <div className="relative bg-[#000000] rounded-lg shadow w-[18rem] transition hover:scale-105">
       <section className="relative">
         <Link to={`/product/${p._id}`}>
           <img 
@@ -33,7 +34,11 @@ const ProductCard = ({ p }) => {
       <div className="p-5">
         <div className="flex-col justify-between">
           <h5 className="mb-2 text-lg text-white">{p?.name}</h5>
-          <p className="text-white text-xl font-semibold mb-4">{`₹ ${p?.price}`}</p>
+          <p className="text-white text-xl font-semibold mb-4">{`₹ ${p?.price.toLocaleString("en-US")}`}</p>
+        </div> 
+        
+        <div className="flex justify-between flex-wrap my-3">
+          <Ratings value={p?.rating}/>
         </div>
 
         <section className="flex justify-between items-center">
@@ -63,7 +68,7 @@ const ProductCard = ({ p }) => {
             className="p-2 rounded-full"
             onClick={() => addToCartHandler(p, 1)}
           >
-            <AiOutlineShoppingCart size={25} color="white" />
+            <AiOutlineShoppingCart size={25} color="white" className="hover: text-red-600" />
           </button>
         </section>
       </div>

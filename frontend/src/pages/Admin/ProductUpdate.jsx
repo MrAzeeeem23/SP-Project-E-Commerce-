@@ -23,6 +23,9 @@ const AdminProductUpdate = () => {
   const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState("");
+  // const [enable, setEnable] = useState(false)
+
+  // console.log("State: ", image)
 
   const navigate = useNavigate();
 
@@ -45,58 +48,44 @@ const AdminProductUpdate = () => {
     }
   }, [productData]);
 
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("image", image);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category", category);
+      formData.append("quantity", quantity);
+      formData.append("brand", brand);
+      formData.append("countInStock", stock);
+      
+      const data = await updateProduct({ productId: params._id, formData }).unwrap();
+      
+      if (data?.error) {
+        toast.error(data.error, "Product Update Faild");
+      } else {
+        toast.success("Product updated successfully");
+        navigate("/admin/allproductslist");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Product update failed. Try again.");
+    }
+    uploadFileHandler()
+  };
+  
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     try {
       const res = await uploadProductImage(formData).unwrap();
-      toast.success("Image uploaded successfully", {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 2000,
-      });
+      toast.success("Image uploaded successfully");
       setImage(res.image);
     } catch (err) {
-      toast.error("Image upload failed", {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 2000,
-      });
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const formData = {
-        image,
-        name,
-        description,
-        price,
-        category,
-        quantity,
-        brand,
-        countInStock: stock,
-      };
-
-      const data = await updateProduct({ productId: params._id, ...formData }).unwrap();
-
-      if (data?.error) {
-        toast.error(data.error, {
-          position: toast.POSITION.TOP_RIGHT,
-          autoClose: 2000,
-        });
-      } else {
-        toast.success("Product updated successfully", {
-          position: toast.POSITION.TOP_RIGHT,
-          autoClose: 2000,
-        });
-        navigate("/admin/allproductslist");
-      }
-    } catch (err) {
-      console.log(err);
-      toast.error("Product update failed. Try again.", {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 2000,
-      });
+      toast.error("Image upload failed");
     }
   };
 
@@ -106,11 +95,9 @@ const AdminProductUpdate = () => {
       if (!answer) return;
 
       const { data } = await deleteProduct(params._id).unwrap();
-      toast.success(`"${data.name}" has been deleted`, {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 2000,
-      });
+      toast.success(`"${data.name}" has been deleted`);
       navigate("/admin/allproductslist");
+
     } catch (err) {
       console.log(err);
       toast.error("Delete failed. Try again.", {
@@ -141,7 +128,7 @@ const AdminProductUpdate = () => {
                 name="image"
                 accept="image/*"
                 onChange={uploadFileHandler}
-                className="hidden"
+                className=""
               />
             </label>
           </div>
@@ -212,10 +199,12 @@ const AdminProductUpdate = () => {
               <div className="flex-1">
                 <label htmlFor="category" className="block text-gray-700">Category</label>
                 <select
+                  required
                   className="w-full p-2 border rounded-lg bg-gray-800 text-white"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
+                  <option>Select Category</option>
                   {categories?.map((c) => (
                     <option key={c._id} value={c._id}>
                       {c.name}
@@ -228,7 +217,8 @@ const AdminProductUpdate = () => {
             <div className="flex space-x-4">
               <button
                 type="submit"
-                className="py-2 px-4 rounded-lg text-white font-bold bg-green-600 hover:bg-green-700"
+                // disabled={enable ? true : false}
+                className="py-2 px-4 rounded-lg text-white font-bold bg-green-600"
               >
                 Update
               </button>

@@ -98,7 +98,7 @@ const Login = () => {
                 to={redirect ? `/register?redirect=${redirect}` : "/register"}
                 className="text-red-500 hover:underline"
               >
-                Register
+                Sign Up
               </Link>
             </p>
           </div>

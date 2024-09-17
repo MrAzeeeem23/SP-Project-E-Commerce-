@@ -51,6 +51,17 @@ const Profile = () => {
         <div className="md:w-1/3">
           <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
           <form onSubmit={submitHandler}>
+          <div className="mb-4">
+              <label className="block text-white mb-2">Avatar</label>
+              <input
+                type="file"
+                placeholder="Add Avatar"
+                className="form-input p-4 rounded-sm w-full"
+                // value={username}
+                // onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
+
             <div className="mb-4">
               <label className="block text-white mb-2">Name</label>
               <input

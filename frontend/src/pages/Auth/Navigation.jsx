@@ -108,7 +108,7 @@ const Navigation = () => {
               </Link>
               <Link to="/register" className="flex items-center transition-transform">
                 <span className="material-symbols-outlined">person_add</span>
-                <span className="ml-2 hidden md:block">Register</span>
+                <span className="ml-2 hidden md:block">Sign Up</span>
               </Link>
             </div>
           )}

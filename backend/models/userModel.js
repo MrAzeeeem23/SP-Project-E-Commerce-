@@ -22,6 +22,10 @@ const userTable = mongoose.Schema({
         require: true,
         default: false
     },
+    avatar: {
+        type: String,
+        required: false
+    }
 },
 
 {  timestamps: true  }
