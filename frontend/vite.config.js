@@ -15,8 +15,8 @@ export default defineConfig({
       "/uploads/": "https://sp-project-e-commerce.onrender.com/",     
       
       // local
-      "/api/": "http://localhost:5000",
-      "/uploads/": "http://localhost:5000",
+      // "/api/": "http://localhost:5000",
+      // "/uploads/": "http://localhost:5000",
     },
   },
 });
