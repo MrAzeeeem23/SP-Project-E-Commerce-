@@ -31,7 +31,7 @@ const Footer = () => {
       <hr />
       <div className="mt-10 text-center">
         <p>&copy; {new Date().getFullYear()} Store Beats. All rights reserved.</p>
-        <h1>Create By: Pathan AzeemKhan</h1> <br />
+        <h1>Created By: Pathan AzeemKhan</h1> <br />
         <Link to={'https://github.com/MrAzeeeem23'}><span className='hover:text-red-600 transition'>GitHub</span></Link>
       </div>
     </footer>
