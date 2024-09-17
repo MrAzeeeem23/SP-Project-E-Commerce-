@@ -8,7 +8,7 @@ const router = express.Router();
 
 // Multer Configuration for Local Storage
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: (req, file, cb) => { 
     cb(null, "uploads/"); // Store locally in the 'uploads' folder
   },
   filename: (req, file, cb) => {
