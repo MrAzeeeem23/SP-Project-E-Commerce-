@@ -12,8 +12,6 @@ import {
 import {useGetProductByIdQuery} from "../../redux/api/productApiSlice";
 
 
-
-
 const Order = () => {
   const { id: orderId } = useParams();
 
@@ -66,7 +64,7 @@ const Order = () => {
       prefill: {
         name: order.user.username,
         email: order.user.email,
-        contact: "Contact Number", // optional
+        contact: "Contact Number", 
       },
       notes: {
         address: order.shippingAddress.address,
@@ -78,6 +76,25 @@ const Order = () => {
 
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
+  };
+
+  const handlePaymentdummy = async () => {
+    try {
+      const paymentResult = {
+        razorpay_payment_id: "simulated_payment_id", 
+        status: 'COMPLETED',
+        update_time: new Date().toISOString(), 
+        payer: {
+          email_address: order.user.email,
+        },
+      };
+  
+      await payOrder({ orderId, paymentResult });
+      refetch(); 
+      toast.success("Payment simulated. Order marked as paid.");
+    } catch (error) {
+      toast.error(error?.data?.message || error.message);
+    }
   };
 
   const deliverHandler = async () => {
@@ -204,10 +221,23 @@ const Order = () => {
             {loadingPay && <Loader />}
             <button
               type="button"
-              className="bg-red-500 text-white w-full py-2"
+              className="bg-red-500 text-white w-full py-2 m-2 rounded-md"
               onClick={handlePayment}
             >
               Pay with Razorpay
+            </button>
+          </div>
+        )}
+
+        {!order.isPaid && (
+          <div>
+            {loadingPay && <Loader />}
+            <button
+              type="button"
+              className="bg-yellow-500 text-white w-full py-2 m-2 rounded-md"
+              onClick={handlePaymentdummy}
+            >
+              Dummy Payment
             </button>
           </div>
         )}
@@ -217,7 +247,7 @@ const Order = () => {
           <div>
             <button
               type="button"
-              className="bg-red-500 text-white w-full py-2"
+              className="bg-red-500 text-white w-full py-2 m-2 rounded-md"
               onClick={deliverHandler}
             >
               Mark As Delivered
