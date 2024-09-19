@@ -18,7 +18,7 @@ const OrderList = () => {
       ) : (
         <>
           <AdminMenu />
-          <div className="overflow-x-auto mt-10">
+          <div className="overflow-x-auto mt-10 px-3">
             <table className="min-w-full">
               <thead className="bg-gray-800 text-white">
                 <tr>
@@ -39,7 +39,7 @@ const OrderList = () => {
                       <img
                         src={order.orderItems[0].image}
                         alt={order._id}
-                        className="w-16 h-16 object-cover"
+                        className="w-16 h-16 object-cover rounded-xl"
                       />
                     </td>
                     <td className="p-3">{order._id}</td>

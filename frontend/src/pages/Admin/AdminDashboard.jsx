@@ -16,6 +16,10 @@ const AdminDashboard = () => {
   const { data: orders, isLoading: ordersLoading } = useGetTotalOrdersQuery();
   const { data: salesDetail, isLoading: salesDetailLoading } = useGetTotalSalesByDateQuery();
 
+  const [toggle, setToggle] = useState(false)
+  const [graphType, setGraphType] = useState("line")
+
+  
   const [chartData, setChartData] = useState({
     options: {
       chart: {
@@ -28,7 +32,7 @@ const AdminDashboard = () => {
         },
         y: {
           formatter: function (value) {
-            return `₹ ${value.toFixed(2)}`;
+            return `₹ ${value.toLocaleString("en-US")}`;
           }
         }
       },
@@ -41,7 +45,7 @@ const AdminDashboard = () => {
       },
       title: {
         text: "Sales Trend Over Time",
-        align: "left",
+        align: "center",
       },
       grid: {
         borderColor: "#ccc",
@@ -92,7 +96,16 @@ const AdminDashboard = () => {
       },
     ],
   });
-
+  
+  const togglefunc = () =>{
+    setToggle(!toggle)  
+    if(!toggle){
+    setGraphType("bar")
+    }else{
+    setGraphType("line")
+  }
+  }
+  
   useEffect(() => {
     if (salesDetail) {
       const categories = salesDetail.map((item) => item._id);
@@ -119,7 +132,7 @@ const AdminDashboard = () => {
                     color: "#fff",
                     background: "#FEB019",
                   },
-                  text: `Average Sales: ₹${averageSales.toFixed(2)}`,
+                  text: `Average Sales: ₹${averageSales.toLocaleString("en-US")}`,
                 },
               },
             ],
@@ -133,13 +146,14 @@ const AdminDashboard = () => {
         ],
       }));
     }
-  }, [salesDetail]);
+  }, [salesDetail, setToggle, setGraphType, togglefunc, setChartData]);
 
   return (
     <>
       <AdminMenu />
 
       <section className="">
+        <h2 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Dashboard.</h2>
         <div className="w-[80%] flex justify-around flex-wrap">
           <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
             <div className="font-bold rounded-full w-[3rem] bg-white text-center p-3">
@@ -148,7 +162,7 @@ const AdminDashboard = () => {
 
             <p className="mt-5">Sales</p>
             <h1 className="text-xl font-bold">
-              ₹ {salesLoading ? <Loader /> : sales.totalSales.toFixed(2)}
+              ₹ {salesLoading ? <Loader /> : sales?.totalSales.toLocaleString("en-US")}
             </h1>
           </div>
 
@@ -174,17 +188,22 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="ml-[10rem] mt-[4rem]">
+        <div className="p-3 mt-[4rem] mr-0 pr-0">
           {salesDetailLoading ? (
             <Loader />
           ) : (
             <Chart
               options={chartData.options}
               series={chartData.series}
-              type="line"
-              width="60%"
+              type={graphType}
+              width="80%"
+              height="200%"
             />
           )}
+          <div className="m-2 pb-6">
+            <span>Type of Chart bar ot line </span>
+            <button onClick={togglefunc} className="bg-red-600 py-3 px-6 rounded-lg">{graphType}</button>
+          </div>
         </div>
 
         <div className="mt-[4rem]">

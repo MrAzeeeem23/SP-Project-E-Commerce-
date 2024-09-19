@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import Loader from "../../components/Loader";
-import { useProfileMutation } from "../../redux/api/usersApiSlice";
+import { useProfileMutation, useAvatarImageMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 import { Link } from "react-router-dom";
 
@@ -13,15 +13,20 @@ const Profile = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [avatar , setAvatar] = useState("")
+
   const { userInfo } = useSelector((state) => state.auth);
 
   const [updateProfile, { isLoading: loadingUpdateProfile }] =
     useProfileMutation();
 
+  const [avatarImage] = useAvatarImageMutation()
+
   useEffect(() => {
     setUserName(userInfo.username);
     setEmail(userInfo.email);
-  }, [userInfo.email, userInfo.username]);
+    setAvatar(userInfo.avatar)
+  }, [userInfo.email, userInfo.username, userInfo.avatar]);
 
   const dispatch = useDispatch();
 
@@ -36,6 +41,7 @@ const Profile = () => {
           username,
           email,
           password,
+          avatar
         }).unwrap();
         dispatch(setCredentials({ ...res }));
         toast.success("Profile updated successfully");
@@ -45,20 +51,39 @@ const Profile = () => {
     }
   };
 
+  const uploadFileHandler = async (e) => {
+    const formdata = new FormData();
+    formdata.append("avatar", e.target.files[0]);
+    try {
+      const res = await avatarImage(formdata).unwrap()
+      toast.success("Avatar Updated Successfully");
+      setAvatar(res.image);
+    } catch (error) {
+      toast.error("Avatar Upload Faild");
+    }
+  }
+
   return (
     <div className="container mx-auto p-4 mb-[10rem]">
+      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Profile.</h1>
       <div className="flex justify-center align-center md:flex md:space-x-4">
         <div className="md:w-1/3">
-          <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
           <form onSubmit={submitHandler}>
           <div className="mb-4">
+          {avatar && (
+            <div className="text-center mb-4">
+              <img src={avatar} alt="product" className="mx-auto w-60 h-60 object-cover rounded-full" />
+            </div>
+          )}
               <label className="block text-white mb-2">Avatar</label>
+              {avatar ? avatar.name : "Add image"}
               <input
                 type="file"
                 placeholder="Add Avatar"
+                name="avatar"
                 className="form-input p-4 rounded-sm w-full"
-                // value={username}
-                // onChange={(e) => setUserName(e.target.value)}
+                accept="image/*"
+                onChange={uploadFileHandler}
               />
             </div>
 

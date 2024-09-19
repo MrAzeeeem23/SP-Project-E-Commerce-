@@ -8,33 +8,34 @@ const UserOrder = () => {
 
   return (
     <div className="container mx-auto">
-      <h2 className="text-2xl font-semibold mb-4">My Orders </h2>
+      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">My Orders </h1>
 
       {isLoading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error?.data?.error || error.error}</Message>
       ) : (
-        <table className="w-full rounded-xl">
+       <div className="w-full lg:w-4/5 mx-auto overflow-x-auto "> 
+        <table className="w-full rounded-xl border">
           <thead>
             <tr>
-              <td className="py-2">IMAGE</td>
-              <td className="py-2">ID</td>
-              <td className="py-2">DATE</td>
-              <td className="py-2">TOTAL</td>
-              <td className="py-2">PAID</td>
-              <td className="py-2">DELIVERED</td>
-              <td className="py-2"></td>
+              <td className="p-2">IMAGE</td>
+              <td className="p-2">ID</td>
+              <td className="p-2">DATE</td>
+              <td className="p-2">TOTAL</td>
+              <td className="p-2">PAID</td>
+              <td className="p-2">DELIVERED</td>
+              <td className="p-2"></td>
             </tr>
           </thead>
 
           <tbody>
             {orders.map((order) => (
-              <tr key={order._id}>
+              <tr key={order._id} className="border">
                 <img
                   src={order.orderItems[0].image}
                   alt={order.user}
-                  className="w-[6rem] mb-5"
+                  className="w-[6rem] h-[6rem] object-cover rounded-xl m-2"
                 />
 
                 <td className="py-2">{order._id}</td>
@@ -76,6 +77,7 @@ const UserOrder = () => {
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   );

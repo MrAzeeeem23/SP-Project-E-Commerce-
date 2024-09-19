@@ -8,6 +8,7 @@ import { logout } from "../../redux/features/auth/authSlice";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
+
   const { cartItems } = useSelector((state) => state.cart);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -89,7 +90,8 @@ const Navigation = () => {
         <div className="relative">
           {userInfo ? (
             <button onClick={toggleDropdown} className="flex items-center focus:outline-none">
-              <span className="text-white">{userInfo.username}</span>
+              <span className="text-white hidden md:block">{userInfo.username}</span>
+              <img src={userInfo?.avatar} alt="avatar" className="w-8 h-8 object-cover rounded-full ml-2" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`h-5 w-4 ml-1 ${dropdownOpen ? "transform rotate-10" : " "} transition-all`}
@@ -153,6 +155,12 @@ const Navigation = () => {
               <li>
                 <Link to="/contact" className="block px-4 py-2 hover:bg-gray-100">
                   Contact
+                </Link>
+              </li>      
+
+              <li>
+                <Link to="/userorder" className="block px-4 py-2 hover:bg-gray-100">
+                  My Order
                 </Link>
               </li>
 

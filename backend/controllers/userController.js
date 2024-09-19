@@ -27,6 +27,7 @@ const createUser = asyncHandler(async (req, res) => {
       username: newUser.username,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
+      avatar: newUser.avatar
     });
   } catch (error) {
     res.status(400);
@@ -53,6 +54,7 @@ const loginUser = asyncHandler(async (req, res) => {
         username: existingUser.username,
         email: existingUser.email,
         isAdmin: existingUser.isAdmin,
+        avatar: existingUser.avatar
       });
     } else {
       return res.status(401).json({ message: 'Invalid password' });
@@ -98,6 +100,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     user.username = req.body.username || user.username;
     user.email = req.body.email || user.email;
+    user.avatar = req.body.avatar || user.avatar
 
     if (req.body.password) {
       const salt = await bcrypt.genSalt(10);
@@ -112,6 +115,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       username: updatedUser.username,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      avatar: updatedUser.avatar
     });
   } else {
     res.status(404);

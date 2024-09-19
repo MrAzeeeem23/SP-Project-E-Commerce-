@@ -102,6 +102,7 @@ const UserList = () => {
                         </div>
                       ) : (
                         <div className="flex items-center">
+                        <img src={user?.avatar} alt="avatar" className="w-8 h-8 object-cover rounded-full mx-2" />   
                           {user.username}{" "}
                           <button
                             onClick={() =>

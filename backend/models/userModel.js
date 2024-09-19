@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 
-
 // this is a structure of user table
 
 const userTable = mongoose.Schema({
@@ -24,7 +23,8 @@ const userTable = mongoose.Schema({
     },
     avatar: {
         type: String,
-        required: false
+        required: false, 
+        default: "https://res.cloudinary.com/beatsimages/image/upload/v1726687474/hpwfxqvdz9srauds46e4.jpg" // default image for all users
     }
 },
 

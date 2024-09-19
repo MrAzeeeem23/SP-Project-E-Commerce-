@@ -29,7 +29,10 @@ const productSchema = mongoose.Schema(
     price: { type: Number, required: true, default: 0 },
     countInStock: { type: Number, required: true, default: 0 },
   },
-  { timestamps: true }
+  { timestamps: true },
+  {
+    collation: { locale: 'en_US', strength: 2 } 
+  }
 );
 
 const Product = mongoose.model("Product", productSchema);

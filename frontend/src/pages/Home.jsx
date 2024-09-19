@@ -23,6 +23,7 @@ const Home = () => {
         </Message>
       ) : (
         <>
+
           <div className="flex justify-center items-center">
             <Link
               to="/shop"
