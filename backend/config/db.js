@@ -10,7 +10,7 @@ const connetDB = async () => {
 
         // offline mongoDB 
         // await mongoose.connect("mongodb://127.0.0.1:27017/AzeemDB")
-        console.log("Successfully connected to the mogo")
+        console.log("Successfully connected to the mogo 🎉")
     } catch (error) {
         console.log(error.message)
     }
