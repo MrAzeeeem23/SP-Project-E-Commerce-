@@ -20,6 +20,15 @@ const ProductCarousel = () => {
     autoplaySpeed: 3000,
   };
 
+    // const settings = {
+    //   className: "center",
+    //   centerMode: true,
+    //   infinite: true,
+    //   centerPadding: "60px",
+    //   slidesToShow: 3,
+    //   speed: 500
+    // };
+
   return (
     <div className="mb-4 mt-[450px] flex justify-center items-center p-10 w-[100%]">
       {isLoading ? null : error ? (
@@ -40,7 +49,7 @@ const ProductCarousel = () => {
               />
               <div className="mt-4 flex flex-col sm:flex-row justify-between">
                 <div className="mb-4 sm:mb-0">
-                  <h2 className="text-lg font-semibold">{name}</h2>
+                  <h2 className="text-[2rem] tracking-tighter font-bold">{name}.</h2>
                   <p className="text-md">₹ {price}</p>
                 </div>
                 <div className="flex items-center">

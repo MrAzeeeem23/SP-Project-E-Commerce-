@@ -19,6 +19,7 @@ const OrderList = () => {
         <>
           <AdminMenu />
           <div className="overflow-x-auto mt-10 px-3">
+            <h1 className="text-[2rem] mb-4 tracking-[-2px] font-[999]">Orders...</h1>
             <table className="min-w-full">
               <thead className="bg-gray-800 text-white">
                 <tr>

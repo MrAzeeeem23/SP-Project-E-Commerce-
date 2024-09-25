@@ -20,6 +20,7 @@ import HeartIcon from "./HeartIcon";
 import Ratings from "./Ratings";
 import ProductTabs from "./ProductTabs";
 import { addToCart } from "../../redux/features/cart/cartSlice";
+import ScrollToTop from "../../Utils/ScrollToTop.js";
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
@@ -63,15 +64,35 @@ const ProductDetails = () => {
     navigate("/cart");
   };
 
+  ScrollToTop()
+
   return (
     <>
-      <div>
+      <div className="flex flex-row">
         <Link
           to="/"
-          className="text-white font-semibold hover:underline ml-[10rem]"
+          className="text-white font-semibold hover:underline ml-[2rem] mx-[0.5rem]"
         >
-          Go Back
+          home
         </Link>
+
+        <p>{"<<"}</p>
+
+        <Link
+          to="/shop"
+          className="text-white font-semibold hover:underline mx-[0.5rem]"
+        >
+          shop
+        </Link>
+
+        <p>{"<<"}</p>
+
+        <Link
+          className="text-white font-semibold hover:underline mx-[0.5rem]"
+        >
+          product
+        </Link>
+
       </div>
 
       {isLoading ? (

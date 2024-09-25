@@ -27,7 +27,7 @@ const Cart = () => {
       <div className="container flex justify-around items-start flex-wrap mx-auto mt-8">
         {cartItems.length === 0 ? (
           <div className="flex flex-col justify-center items-center">
-            Your cart is empty  
+            <h1 className="text-[2rem] mb-4 tracking-[-1.3px] font-[999]">Your Cart is empty 😑</h1>
             <div className="bg-red-600 p-3 m-3 rounded-full hover:bg-red-900">
             <Link to="/shop">Go To Shop</Link>
             </div>
@@ -59,7 +59,6 @@ const Cart = () => {
                       ₹ {item.price}
                     </div>
                   </div>
-
                   <div className="w-24">
                     <select
                       className="w-full p-1 border rounded text-black"
@@ -87,6 +86,8 @@ const Cart = () => {
                 </div>
               ))}
 
+              <hr />
+
               <div className="mt-8 w-[100%]">
                 <div className="p-4 rounded-lg">
                   <h2 className="text-xl font-semibold mb-2">
@@ -99,8 +100,7 @@ const Cart = () => {
                       .reduce((acc, item) => acc + item.qty * item.price, 0)
                       .toFixed(2)}
                   </div>
-
-                  <button
+                    <button
                     className="bg-red-500 mt-4 py-2 px-4 rounded-full text-lg w-[100%]"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}

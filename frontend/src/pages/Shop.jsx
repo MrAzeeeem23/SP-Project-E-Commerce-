@@ -173,7 +173,7 @@ const Shop = () => {
             <div className="flex justify-between items-center">
               <button className="bg-red-600 rounded-md p-2 flex-row" onClick={HandleToggle}>
                 <span className="p-2">Filter</span>
-                <span className={`material-symbols-outlined translate-y-1 ${Toggle ? "transfrom rotate-180" : " "} transition`}>menu_open</span>
+                <span className={`material-symbols-outlined translate-y-1 ${Toggle ? " " : "transfrom rotate-180"} transition`}>menu_open</span>
               </button>
               <h2 className="text-[2.5rem] uppercase text-center tracking-[-5px] font-[999]">shop.</h2>
 

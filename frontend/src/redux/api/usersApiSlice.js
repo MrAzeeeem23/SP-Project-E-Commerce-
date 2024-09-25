@@ -35,6 +35,12 @@ export const userApiSlice = apiSlice.injectEndpoints({
         url: `${UPLOAD_URL}`,
         method: "POST",
         body: data,
+        onUploadProgress: (progressEvent) => {
+            const progress = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            return progress;
+          },
       })
     }),
     getUsers: builder.query({

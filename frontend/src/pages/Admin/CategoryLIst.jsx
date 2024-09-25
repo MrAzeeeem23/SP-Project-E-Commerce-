@@ -96,7 +96,7 @@ const CategoryList = () => {
     <div className="flex flex-col justify-center md:flex-row">
       <AdminMenu />
       <div className="md:w-3/4 p-3">
-        <div className="h-12">Manage Categories</div>
+        <h1 className="text-[2rem] mb-4 tracking-[-2px] font-[999]">Manage Category</h1>
         <CategoryForm
           value={name}
           setValue={setName}
@@ -104,7 +104,6 @@ const CategoryList = () => {
         />
         <br />
         <hr />
-
         <div className="flex flex-wrap">
           {categories?.map((category) => (
             <div key={category._id}>

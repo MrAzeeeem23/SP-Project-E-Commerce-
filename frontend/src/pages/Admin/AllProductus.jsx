@@ -27,13 +27,13 @@ const AllProducts = () => {
                 <Link
                   key={product._id}
                   to={`/admin/product/update/${product._id}`}
-                  className="block mb-4 overflow-hidden"
+                  className="block mb-4 overflow-hidden transition-all hover:scale-105"
                 >
-                  <div className="flex">
+                  <div className="flex bg-gray-900 p-4 rounded-md">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-[10rem] object-cover"
+                      className="w-[10rem] object-cover rounded-md"
                     />
                     <div className="p-4 flex flex-col justify-around">
                       <div className="flex justify-between">
@@ -46,8 +46,8 @@ const AllProducts = () => {
                         </p>
                       </div>
 
-                      <p className="text-gray-400 xl:w-[30rem] lg:w-[30rem] md:w-[20rem] sm:w-[10rem] text-sm mb-4">
-                        {product?.description?.substring(0, 160)}...
+                      <p className="text-gray-400 xl:w-[25rem] lg:w-[25rem] md:w-[20rem] sm:w-[10rem] text-sm mb-4">
+                        {product?.description?.substring(0, 130)}...
                       </p>
 
                       <div className="flex justify-between">

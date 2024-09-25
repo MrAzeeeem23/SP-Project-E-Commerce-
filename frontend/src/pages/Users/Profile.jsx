@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import Loader from "../../components/Loader";
+import MiniLoader from "../../components/MiniLoader";
+
 import { useProfileMutation, useAvatarImageMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 import { Link } from "react-router-dom";
@@ -12,6 +14,8 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [loader, setLoader] = useState(false)
 
   const [avatar , setAvatar] = useState("")
 
@@ -53,13 +57,16 @@ const Profile = () => {
 
   const uploadFileHandler = async (e) => {
     const formdata = new FormData();
-    formdata.append("avatar", e.target.files[0]);
+    formdata.append("image", e.target.files[0]);
+    setLoader(true)
     try {
       const res = await avatarImage(formdata).unwrap()
       toast.success("Avatar Updated Successfully");
+      setLoader(false)
       setAvatar(res.image);
     } catch (error) {
       toast.error("Avatar Upload Faild");
+      setLoader(false)
     }
   }
 
@@ -68,23 +75,33 @@ const Profile = () => {
       <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Profile.</h1>
       <div className="flex justify-center align-center md:flex md:space-x-4">
         <div className="md:w-1/3">
+          
           <form onSubmit={submitHandler}>
           <div className="mb-4">
           {avatar && (
             <div className="text-center mb-4">
-              <img src={avatar} alt="product" className="mx-auto w-60 h-60 object-cover rounded-full" />
+
+              {loader ?  
+              <MiniLoader />
+               : 
+              <img src={avatar} alt="product" 
+              className="mx-auto w-60 h-60 object-cover rounded-full shadow-2xl shadow-fuchsia-200" />
+              }
+
             </div>
           )}
-              <label className="block text-white mb-2">Avatar</label>
-              {avatar ? avatar.name : "Add image"}
+            <label className="block bg-slate-900 p-4 text-white mb-2 cursor-pointer text-center rounded-xl transition-all hover:bg-slate-700">
+                  {/* {avatar ? avatar.name : "Update Avatar"} */}
+                  <span className="text-xl">Update Avatar</span>
               <input
                 type="file"
                 placeholder="Add Avatar"
                 name="avatar"
-                className="form-input p-4 rounded-sm w-full"
+                className="hidden form-input p-4 rounded-sm w-full bg-slate-500"
                 accept="image/*"
                 onChange={uploadFileHandler}
               />
+              </label>
             </div>
 
             <div className="mb-4">

@@ -95,6 +95,7 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 });
 
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
+  // console.log(req.fields)
   const user = await User.findById(req.user._id);
 
   if (user) {

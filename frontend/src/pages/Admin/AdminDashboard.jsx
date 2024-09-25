@@ -153,7 +153,7 @@ const AdminDashboard = () => {
       <AdminMenu />
 
       <section className="">
-        <h2 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Dashboard.</h2>
+        <h2 className="text-[4rem] mb-4 ml-2 uppercase tracking-[-5px] font-[999]">Dashboard.</h2>
         <div className="w-[80%] flex justify-around flex-wrap">
           <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
             <div className="font-bold rounded-full w-[3rem] bg-white text-center p-3">
@@ -197,11 +197,11 @@ const AdminDashboard = () => {
               series={chartData.series}
               type={graphType}
               width="80%"
-              height="200%"
+              height="240%"
             />
           )}
           <div className="m-2 pb-6">
-            <span>Type of Chart bar ot line </span>
+            <span>Type of Chart Bar or Line </span>
             <button onClick={togglefunc} className="bg-red-600 py-3 px-6 rounded-lg">{graphType}</button>
           </div>
         </div>

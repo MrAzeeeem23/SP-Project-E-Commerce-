@@ -5,7 +5,19 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-10 mt-[10rem]">
-      <div className="container mx-auto flex flex-wrap justify-between">
+      <div className="marquee mb-6">
+        <div className="track">
+          <hr />
+          <div className="content text-[4rem] uppercase italic tracking-[-5px] font-[999]">
+            &nbsp; beats store shop latest beats store shop latest beats
+             store shop latest beats store shop latest beats store shop 
+             latest beats store shop latest beats store shop latest beats store 
+             shop latest beats store shop latest 
+          </div>
+          <hr />
+        </div>
+      </div>
+      <div className="container mx-auto my-6 flex flex-wrap justify-between">
         <span id='MainText' className="text-white text-[100px] m-3 hover:text-red-600 hover:rotate-90 transition">
           <Link to='/'>
           <span className=''>BEATS <br /> STORE</span>

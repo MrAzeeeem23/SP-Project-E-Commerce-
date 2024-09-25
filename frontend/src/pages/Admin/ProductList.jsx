@@ -8,6 +8,8 @@ import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
 
+import MiniLoader from "../../components/MiniLoader";
+
 const ProductList = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
@@ -19,6 +21,8 @@ const ProductList = () => {
   const [stock, setStock] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
   const navigate = useNavigate();
+
+  const [loader, setLoader] = useState(false)
 
   const [uploadProductImage] = useUploadProductImageMutation();
   const [createProduct] = useCreateProductMutation();
@@ -55,14 +59,21 @@ const ProductList = () => {
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
+    setLoader(true)
 
     try {
       const res = await uploadProductImage(formData).unwrap();
       toast.success(res.message);
+
+      setLoader(false)
+
       setImage(res.image);
       setImageUrl(res.image);
     } catch (error) {
+
       toast.error(error?.data?.message || error.error);
+      setLoader(false)
+
     }
   };
 
@@ -71,21 +82,25 @@ const ProductList = () => {
       <div className="flex flex-col md:flex-row">
         <AdminMenu />
         <div className="md:w-3/4 p-3">
-          <h1 className="text-2xl font-bold mb-4">Create Product</h1>
+          <h1 className="text-[2rem] mb-4 tracking-[-2px] font-[999]">Create Product</h1>
 
           {imageUrl && (
             <div className="text-center mb-4">
-              <img
+              {
+                loader ? <MiniLoader /> 
+                : 
+                <img
                 src={imageUrl}
                 alt="product"
                 className="block mx-auto max-h-[200px] rounded-lg object-cover"
               />
+              }
             </div>
           )}
 
           <div className="mb-3">
-            <label className="block w-full py-3 px-4 bg-gray-800 text-white text-center rounded-lg cursor-pointer font-bold">
-              {image ? image.name : "Upload Image"}
+            <label className="block w-full py-3 px-4 bg-gray-800 text-white text-center rounded-lg cursor-pointer font-bold transition-all hover:bg-slate-700">
+              {image ? <span className="text-white">image.name</span> : "Upload Image"}
               <input
                 type="file"
                 name="image"
@@ -173,6 +188,7 @@ const ProductList = () => {
                   className="w-full p-3 border rounded-lg bg-gray-800 text-white"
                   onChange={(e) => setCategory(e.target.value)}
                 >
+                  <option>Select Category</option>
                   {categories?.map((c) => (
                     <option key={c._id} value={c._id}>
                       {c.name}

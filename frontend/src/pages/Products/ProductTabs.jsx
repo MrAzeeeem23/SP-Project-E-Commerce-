@@ -31,25 +31,22 @@ const ProductTabs = ({
     <div className="flex flex-col md:flex-row">
       <section className="mr-[5rem]">
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
-            activeTab === 1 ? "font-bold" : ""
-          }`}
+          className={`flex-1 p-4 cursor-pointer text-lg transition-all ${activeTab === 1 ? "font-bold italic" : ""
+            }`}
           onClick={() => handleTabClick(1)}
         >
           Write Your Review
         </div>
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
-            activeTab === 2 ? "font-bold" : ""
-          }`}
+          className={`flex-1 p-4 cursor-pointer text-lg ${activeTab === 2 ? "font-bold italic" : ""
+            }`}
           onClick={() => handleTabClick(2)}
         >
           All Reviews
         </div>
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
-            activeTab === 3 ? "font-bold" : ""
-          }`}
+          className={`flex-1 p-4 cursor-pointer text-lg ${activeTab === 3 ? "font-bold italic" : ""
+            }`}
           onClick={() => handleTabClick(3)}
         >
           Related Products
@@ -60,8 +57,13 @@ const ProductTabs = ({
       <section className="mx-3">
         {activeTab === 1 && (
           <div className="mt-4">
+            
             {userInfo ? (
-              <form onSubmit={submitHandler}>
+
+              <form onSubmit={submitHandler}> 
+
+               <h1 className="text-[3rem] mb-4 uppercase tracking-[-3px] font-[999]">Write review.</h1>
+
                 <div className="my-2">
                   <label htmlFor="rating" className="block text-xl mb-2">
                     Rating
@@ -106,9 +108,11 @@ const ProductTabs = ({
                 </button>
               </form>
             ) : (
-              <p>
-                Please <Link to="/login">sign in</Link> to write a review
+
+              <p className="bg-slate-900 p-2 rounded-lg text-[1.2rem] font-bold italic">
+                Please <Link to="/login" className="underline text-red-600">sign in</Link> to write a review.
               </p>
+
             )}
           </div>
         )}
@@ -117,17 +121,29 @@ const ProductTabs = ({
       <section>
         {activeTab === 2 && (
           <>
-            <div className="text-center">{product.reviews.length === 0 && <p>No Reviews</p>}</div>
+            <div>
+              {
+              product.reviews.length >= 1 ? 
+              <h1 className="text-[3rem] mb-4 uppercase tracking-[-3px] font-[999]">All reviews.</h1> : " "
+              }
+            </div>
+
+            <div className="text-center">
+              {
+              product.reviews.length === 0 && 
+              <p className="text-[3rem] mb-4 uppercase tracking-[-3px] font-[999] text-slate-700">No Reviews.</p>
+              }
+            </div>
 
             <div>
               {product.reviews.map((review) => (
                 <div
                   key={review._id}
-                  className="bg-[#1A1A1A] p-4 rounded-lg xl:ml-[2rem] sm:ml-[0rem] xl:w-[50rem] sm:w-[24rem] mb-5"
+                  className="bg-[#1A1A1A] p-4 rounded-lg xl:ml-[2rem] sm:ml-[0rem] xl:w-[50rem] sm:w-[22rem] mb-5"
                 >
                   <div className="flex justify-between">
-                    <strong className="text-[#B0B0B0]">{review.name}</strong>
-                    <p className="text-[#B0B0B0]">
+                    <strong className="text-[#B0B0B0] font-bold">{review.name}</strong>
+                    <p className="text-[#ff1313]">
                       {review.createdAt.substring(0, 10)}
                     </p>
                   </div>
@@ -143,17 +159,20 @@ const ProductTabs = ({
 
       <section>
         {activeTab === 3 && (
-          <section className="flex flex-wrap">
-            {!data ? (
-              <Loader />
-            ) : (
-              data.map((product) => (
-                <div key={product._id}>
-                  <SmallProduct product={product} />
-                </div>
-              ))
-            )}
-          </section>
+          <div>
+            <h1 className="text-[3rem] mb-4 uppercase tracking-[-3px] font-[999]">Related products.</h1>
+            <section className="flex flex-wrap">
+              {!data ? (
+                <Loader />
+              ) : (
+                data.map((product) => (
+                  <div key={product._id}>
+                    <SmallProduct product={product} />
+                  </div>
+                ))
+              )}
+            </section>
+          </div>
         )}
       </section>
     </div>

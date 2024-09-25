@@ -10,6 +10,8 @@ import {
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
 
+import MiniLoader from "../../components/MiniLoader";
+
 const AdminProductUpdate = () => {
   const params = useParams();
 
@@ -23,6 +25,9 @@ const AdminProductUpdate = () => {
   const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState("");
+
+  const [loader, setLoader] = useState(false)
+  
   // const [enable, setEnable] = useState(false)
 
   // console.log("State: ", image)
@@ -80,12 +85,16 @@ const AdminProductUpdate = () => {
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
+    setLoader(true)
+
     try {
       const res = await uploadProductImage(formData).unwrap();
       toast.success("Image uploaded successfully");
       setImage(res.image);
+      setLoader(false)
     } catch (err) {
       toast.error("Image upload failed");
+      setLoader(false)
     }
   };
 
@@ -112,16 +121,20 @@ const AdminProductUpdate = () => {
       <div className="flex flex-col md:flex-row">
         <AdminMenu />
         <div className="md:w-3/4 p-3">
-          <h1 className="text-2xl font-bold mb-4">Update / Delete Product</h1>
+          <h1 className="text-[2rem] mb-4 tracking-[-2px] font-[999]">Update / Delete Product</h1>
 
           {image && (
             <div className="text-center mb-4">
-              <img src={image} alt="product" className="mx-auto w-60 h-60 object-cover rounded-lg" />
+              {
+                loader ? <MiniLoader />
+                 : 
+                <img src={image} alt="product" className="mx-auto w-60 h-60 object-cover rounded-lg" />
+              }
             </div>
           )}
 
           <div className="mb-3">
-            <label className="block w-full text-center py-2 px-4 bg-gray-800 text-white rounded-lg cursor-pointer">
+            <label className="block w-full text-center py-2 px-4 bg-gray-800 text-white rounded-lg cursor-pointer transition-all hover:bg-slate-700">
               {image ? image.name : "Upload image"}
               <input
                 type="file"

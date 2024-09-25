@@ -2,7 +2,7 @@ const CategoryForm = ({
     value,
     setValue,
     handleSubmit,
-    buttonText = "Submit",
+    buttonText = "Add category",
     handleDelete,
   }) => {
     return (

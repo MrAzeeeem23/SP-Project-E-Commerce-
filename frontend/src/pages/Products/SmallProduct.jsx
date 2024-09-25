@@ -4,7 +4,7 @@ import "./style.css"
 
 const SmallProduct = ({ product }) => {
   return (
-    <div className="bg-black side-cut my-8 w-[20rem] mx-[1rem] p-3 transition hover:scale-105">
+    <div className="bg-black side-cut my-8 w-[19rem] mx-[1rem] p-3 transition hover:scale-105">
       <Link to={`/product/${product._id}`}>
       <div className="relative">
         <img

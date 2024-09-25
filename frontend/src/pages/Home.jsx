@@ -5,6 +5,7 @@ import Message from "../components/Message";
 import Header from "../components/Header";
 import Product from "./Products/Product";
 import MainHeader from "./Auth/MainHeader";
+import ScrollToTop from "../Utils/ScrollToTop.js";
 
 const Home = () => {
   const { keyword } = useParams();
@@ -27,6 +28,7 @@ const Home = () => {
           <div className="flex justify-center items-center">
             <Link
               to="/shop"
+              onClick={ScrollToTop}
               className="bg-[#e5202b] font-bold rounded-full uppercase italic py-3 px-20 my-20 hover:bg-[#cd696e]">
               Shop all products
             </Link>

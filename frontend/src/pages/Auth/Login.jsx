@@ -85,7 +85,7 @@ const Login = () => {
               type="submit"
               className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer w-full"
             >
-              {isLoading ? "Signing In..." : "Sign In"}
+              {isLoading ? "Logging In..." : "Login"}
             </button>
 
             {isLoading && <Loader />}
