@@ -14,20 +14,25 @@ const AdminMenu = () => {
       <button
         className={`${
           isMenuOpen ? "right-7" : "right-7"
-        } bg-[#000000] p-3 fixed rounded-lg z-40`}
+        } bg-[#000000] p-3 fixed rounded-lg z-50`}
         onClick={toggleMenu}
       >
         {isMenuOpen ? (
           <FaTimes color="white" />
         ) : (
           <>
-            <span class="material-symbols-outlined">menu</span>
+            <span className="material-symbols-outlined">menu</span>
           </>
         )}
       </button>
 
-      {isMenuOpen && (
-        <section className="bg-[#151515] p-4 fixed right-7 ">
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[250px] bg-[#151515] z-40 transition-transform transform ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        } md:w-[300px]`}
+      >
+        <section className="p-4">
           <ul className="list-none mt-2">
             <li>
               <NavLink
@@ -97,6 +102,14 @@ const AdminMenu = () => {
             </li>
           </ul>
         </section>
+      </div>
+
+      {/* Overlay for smaller screens */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
+          onClick={toggleMenu}
+        ></div>
       )}
     </>
   );

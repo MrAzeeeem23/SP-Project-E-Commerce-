@@ -17,6 +17,13 @@ const Login = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
+  const [toggle, setToggle] = useState(false)
+
+  const toggling = (e) => {
+    e.preventDefault();
+    setToggle(!toggle)
+  }
+
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
   const redirect = sp.get("redirect") || "/";
@@ -31,7 +38,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();
-      console.log(res);
+      // console.log(res);
       dispatch(setCredentials({ ...res }));
       navigate(redirect);
     } catch (err) {
@@ -66,12 +73,13 @@ const Login = () => {
             <div className="mb-4">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-white"
+                className="text-sm font-medium text-white flex justify-between"
               >
                 Password
+              <button className="text-xl" onClick={toggling}>{toggle ? "🙈" : "🐵"}</button>
               </label>
               <input
-                type="password"
+                type={toggle ? "text" : "password"}
                 id="password"
                 className="mt-1 p-2 border rounded w-full"
                 placeholder="Enter password"
@@ -83,7 +91,7 @@ const Login = () => {
             <button
               disabled={isLoading}
               type="submit"
-              className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer w-full"
+              className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer w-full transition-all hover:bg-red-700"
             >
               {isLoading ? "Logging In..." : "Login"}
             </button>

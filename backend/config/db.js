@@ -6,7 +6,6 @@ dotenv.config()
 const connetDB = async () => {
     try {
         // online mongoDB atles
-
         await mongoose.connect(process.env.MONGO_URI)
 
         // offline mongoDB 

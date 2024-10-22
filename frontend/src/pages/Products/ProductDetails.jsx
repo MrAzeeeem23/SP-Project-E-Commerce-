@@ -11,7 +11,6 @@ import Message from "../../components/Message";
 import {
   FaBox,
   FaClock,
-  FaShoppingCart,
   FaStar,
   FaStore,
 } from "react-icons/fa";
@@ -37,6 +36,8 @@ const ProductDetails = () => {
     refetch,
     error,
   } = useGetProductDetailsQuery(productId);
+
+  console.log(product)
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -129,20 +130,13 @@ const ProductDetails = () => {
                   </h1>
                   <h1 className="flex items-center mb-6 w-[20rem]">
                     <FaClock className="mr-2 text-white" /> Added:{" "}
-                    {moment(product.createAt).fromNow()}
+                    {product.createAt}
                   </h1>
                   <h1 className="flex items-center mb-6">
                     <FaStar className="mr-2 text-white" /> Reviews:{" "}
                     {product.numReviews}
                   </h1>
-                
-                  <h1 className="flex items-center mb-6">
-                    <FaStar className="mr-2 text-white" /> Ratings: {rating}
-                  </h1>
-                  <h1 className="flex items-center mb-6">
-                    <FaShoppingCart className="mr-2 text-white" /> Quantity:{" "}
-                    {product.quantity}
-                  </h1>
+
                   <h1 className="flex items-center mb-2 w-[10rem]">
                     <FaBox className="mr-2 text-white" /> In Stock:{" "}
                     {product.countInStock}

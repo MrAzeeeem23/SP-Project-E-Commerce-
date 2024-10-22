@@ -72,7 +72,7 @@ const Profile = () => {
 
   return (
     <div className="container mx-auto p-4 mb-[10rem]">
-      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Profile.</h1>
+      <h1 className="text-[4rem] mb-4 capitalize tracking-[-5px] font-[999]">Profile.</h1>
       <div className="flex justify-center align-center md:flex md:space-x-4">
         <div className="md:w-1/3">
           

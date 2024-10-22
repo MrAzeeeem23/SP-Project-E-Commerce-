@@ -16,7 +16,6 @@ const ProductList = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
@@ -38,7 +37,6 @@ const ProductList = () => {
       productData.append("description", description);
       productData.append("price", price);
       productData.append("category", category);
-      productData.append("quantity", quantity);
       productData.append("brand", brand);
       productData.append("countInStock", stock);
 
@@ -138,16 +136,6 @@ const ProductList = () => {
 
             <div className="flex flex-wrap -mx-3">
               <div className="w-full md:w-1/2 px-3 mb-6">
-                <label htmlFor="quantity" className="block text-gray-700">Quantity</label>
-                <input
-                  type="number"
-                  className="w-full p-3 border rounded-lg bg-gray-800 text-white"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="w-full md:w-1/2 px-3 mb-6">
                 <label htmlFor="brand" className="block text-gray-700">Brand</label>
                 <input
                   type="text"
@@ -162,7 +150,7 @@ const ProductList = () => {
             <div className="mb-6">
               <label htmlFor="description" className="block text-gray-700">Description</label>
               <textarea
-                className="w-full p-3 border rounded-lg bg-gray-800 text-white"
+                className="w-full h-[14rem] p-3 border rounded-lg bg-gray-800 text-white"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 required

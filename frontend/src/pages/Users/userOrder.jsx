@@ -8,7 +8,7 @@ const UserOrder = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">My Orders </h1>
+      <h1 className="text-[4rem] mb-4 capitalize tracking-[-5px] font-[999]">My Orders </h1>
 
       {isLoading ? (
         <Loader />
@@ -18,6 +18,9 @@ const UserOrder = () => {
        <div className="w-full lg:w-4/5 mx-auto overflow-x-auto "> 
         <table className="w-full rounded-xl border">
           <thead>
+            {orders.length === 0 ? 
+            <span className="text-[1.5rem] mb-2 mt-4 tracking-[-1.5px] font-[700] relative ">You don't have any orders. 💔</span>
+            :
             <tr>
               <td className="p-2">IMAGE</td>
               <td className="p-2">ID</td>
@@ -27,6 +30,7 @@ const UserOrder = () => {
               <td className="p-2">DELIVERED</td>
               <td className="p-2"></td>
             </tr>
+          }
           </thead>
 
           <tbody>

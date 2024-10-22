@@ -62,7 +62,7 @@ const ProductTabs = ({
 
               <form onSubmit={submitHandler}> 
 
-               <h1 className="text-[3rem] mb-4 uppercase tracking-[-3px] font-[999]">Write review.</h1>
+               <h1 className="text-[3rem] mb-4 tracking-[-3px] font-[999]">Write review.</h1>
 
                 <div className="my-2">
                   <label htmlFor="rating" className="block text-xl mb-2">
@@ -77,11 +77,11 @@ const ProductTabs = ({
                     className="p-2 border rounded-lg xl:w-[40rem] text-black"
                   >
                     <option value="">Select</option>
-                    <option value="1">Inferior</option>
-                    <option value="2">Decent</option>
-                    <option value="3">Great</option>
-                    <option value="4">Excellent</option>
-                    <option value="5">Exceptional</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
                   </select>
                 </div>
 
@@ -124,14 +124,14 @@ const ProductTabs = ({
             <div>
               {
               product.reviews.length >= 1 ? 
-              <h1 className="text-[3rem] mb-4 uppercase tracking-[-3px] font-[999]">All reviews.</h1> : " "
+              <h1 className="text-[3rem] mb-4  tracking-[-3px] font-[999]">All reviews.</h1> : " "
               }
             </div>
 
             <div className="text-center">
               {
               product.reviews.length === 0 && 
-              <p className="text-[3rem] mb-4 uppercase tracking-[-3px] font-[999] text-slate-700">No Reviews.</p>
+              <p className="text-[3rem] mb-4  tracking-[-3px] font-[999] text-slate-700">No Reviews.</p>
               }
             </div>
 
@@ -160,7 +160,7 @@ const ProductTabs = ({
       <section>
         {activeTab === 3 && (
           <div>
-            <h1 className="text-[3rem] mb-4 uppercase tracking-[-3px] font-[999]">Related products.</h1>
+            <h1 className="text-[3rem] mb-4  tracking-[-3px] font-[999]">Related products.</h1>
             <section className="flex flex-wrap">
               {!data ? (
                 <Loader />

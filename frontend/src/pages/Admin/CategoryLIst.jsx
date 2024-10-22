@@ -44,7 +44,6 @@ const CategoryList = () => {
     }
   };
 
-   
 
   const handleUpdateCategory = async (e) => {
     e.preventDefault();
@@ -93,8 +92,9 @@ const CategoryList = () => {
   };
 
   return (
+    <><AdminMenu />
     <div className="flex flex-col justify-center md:flex-row">
-      <AdminMenu />
+      
       <div className="md:w-3/4 p-3">
         <h1 className="text-[2rem] mb-4 tracking-[-2px] font-[999]">Manage Category</h1>
         <CategoryForm
@@ -134,6 +134,7 @@ const CategoryList = () => {
         </Modal>
       </div>
     </div>
+    </>
   );
 };
 

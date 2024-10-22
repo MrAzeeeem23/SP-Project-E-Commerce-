@@ -37,7 +37,7 @@ const Cart = () => {
         ) : (
           <>
             <div className="flex flex-col w-[100%]">
-              <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999]">Cart.</h1>
+              <h1 className="text-[4rem] mb-4 capitalize tracking-[-5px] font-[999]">Cart.</h1>
 
               {cartItems.map((item) => (
                 <div key={item._id} className="flex justify-center items-center pb-2 mx-3">

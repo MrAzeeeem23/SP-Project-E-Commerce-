@@ -19,6 +19,13 @@ const Register = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
+  const [toggle, setToggle] = useState(false)
+
+  const toggling = (e) => {
+    e.preventDefault();
+    setToggle(!toggle)
+  }
+
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
   const redirect = sp.get("redirect") || "/";
@@ -42,7 +49,7 @@ const Register = () => {
         toast.success("User successfully registered");
       } catch (err) {
         console.log(err);
-        toast.error(err.data.message);
+        toast.error(err.data);
       }
     }
   };
@@ -90,12 +97,14 @@ const Register = () => {
           <div className="my-[2rem]">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-white"
+              className="flex justify-between text-sm font-medium text-white"
             >
               Password
+
+            <button className="text-xl" onClick={toggling}>{toggle ? "🙈" : "🐵"}</button>
             </label>
             <input
-              type="password"
+              type={toggle ? "text" : "password"}
               id="password"
               className="mt-1 p-2 border rounded w-full"
               placeholder="Enter password"
@@ -112,7 +121,7 @@ const Register = () => {
               Confirm Password
             </label>
             <input
-              type="password"
+              type={toggle ? "text" : "password"}
               id="confirmPassword"
               className="mt-1 p-2 border rounded w-full"
               placeholder="Confirm password"
@@ -124,7 +133,7 @@ const Register = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-red-600 text-white px-4 py-2 rounded cursor-pointer  w-full"
+            className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer w-full transition-all hover:bg-red-700"
           >
             {isLoading ? "Signing Up..." : "Sign Up"}
           </button>

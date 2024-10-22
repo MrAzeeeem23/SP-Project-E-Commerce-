@@ -64,12 +64,18 @@ const ProductCard = ({ p }) => {
             </svg>
           </Link>
 
+          {p.countInStock === 0 ? "Out of Stock" :
+
           <button
             className="p-2 rounded-full"
-            onClick={() => addToCartHandler(p, 1)}
-          >
+            onClick={() => addToCartHandler(p, 1)}>
+
             <AiOutlineShoppingCart size={25} color="white" className="hover: text-red-600" />
-          </button>
+
+          </button> 
+
+          }
+
         </section>
       </div>
     </div>

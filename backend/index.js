@@ -28,12 +28,12 @@ const app = express();
 //     next();
 // });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({limit: "16kb"}));
+app.use(express.urlencoded({ extended: true })); // using extended for URL object nesting.
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://beatsstore.netlify.app', 
+  origin: "*", 
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   credentials: true, // Allow cookies to be sent
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -51,7 +51,7 @@ app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
 
 app.get('/', (req, res) => {
-  res.send('Hello world');
+  res.send('Hello world this is backend 😑');
 });
 
 app.listen(port, () => console.log(`Server is running on port: http://localhost:${port}`));

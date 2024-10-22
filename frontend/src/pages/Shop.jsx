@@ -175,7 +175,7 @@ const Shop = () => {
                 <span className="p-2">Filter</span>
                 <span className={`material-symbols-outlined translate-y-1 ${Toggle ? " " : "transfrom rotate-180"} transition`}>menu_open</span>
               </button>
-              <h2 className="text-[2.5rem] uppercase text-center tracking-[-5px] font-[999]">shop.</h2>
+              <h2 className="text-[2.5rem] capitalize text-center tracking-[-5px] font-[999]">Shop.</h2>
 
               <h2 className="h4 text-center mb-2">{products?.length} Products</h2>
             </div>

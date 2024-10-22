@@ -34,7 +34,7 @@ nav .container {
   position: relative;
   width: 100vw;
   max-width: 100%;
-  height: 100px;
+  height: 110px;
   overflow-x: hidden;
 }
 
@@ -49,3 +49,5 @@ nav .container {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+ 

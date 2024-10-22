@@ -9,7 +9,7 @@ function calcPrices(orderItems) {
   );
 
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
-  const taxRate = 0.15;
+  const taxRate = 0.18;
   const taxPrice = (itemsPrice * taxRate).toFixed(2);
 
   const totalPrice = (
@@ -144,7 +144,7 @@ const findOrderById = async (req, res) => {
     const order = await Order.findById(req.params.id).populate(
       "user",
       "username email"
-    );
+    ); 
 
     if (order) {
       res.json(order);
@@ -160,7 +160,7 @@ const findOrderById = async (req, res) => {
 const markOrderAsPaid = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
-
+   
     if (order) {
       order.isPaid = true;
       order.paidAt = Date.now();
@@ -171,6 +171,32 @@ const markOrderAsPaid = async (req, res) => {
         email_address: req.body.payer.email_address,
       };
 
+      const products = await Product.find({
+        _id: { $in: order.orderItems.map((items) => items.product )}
+      }) // this code sends array
+  
+  
+      for(const item of order.orderItems){
+        const product = products.find((p) => p._id.toString() === item.product.toString()); // this sends object
+  
+        console.log(product.countInStock)
+  
+        if(product){
+          product.countInStock -= item.qty
+  
+          if(product.countInStock < 0){
+            res.status(400);
+            throw new error("Product is Out of Stock 😑")
+          }
+  
+          await product.save();
+  
+        } else {
+          res.status(400)
+          throw new error(`Sorry Product not found: ${item.product}`)
+        }
+      }
+      
       const updateOrder = await order.save();
       res.status(200).json(updateOrder);
     } else {
@@ -187,11 +213,12 @@ const markOrderAsDelivered = async (req, res) => {
     const order = await Order.findById(req.params.id);
 
     if (order) {
+
       order.isDelivered = true;
       order.deliveredAt = Date.now();
-
       const updatedOrder = await order.save();
       res.json(updatedOrder);
+
     } else {
       res.status(404);
       throw new Error("Order not found");
@@ -200,6 +227,44 @@ const markOrderAsDelivered = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// fetch all the associeted product with order
+// iterate through order items and product id
+
+// const manageStock = async (req, res) => {
+//   try{
+//     const order = await Order.findById(req.params.id);
+
+//     const products = await Product.find({
+//       _id: { $in: order.orderItems.map((items) => items.product )}
+//     })
+
+//     // console.log(order)
+
+//     for(const item of order.orderItems){
+//       const product = products.find((p) => p._id.toString() === item.product.toString());
+
+//       console.log(product)
+
+//       if(product){
+//         product.countInStock -= item.qty
+
+//         if(products.countInStock < 0){
+//           res.status(400);
+//           throw new error("Product is Out of Stock 😑")
+//         }
+
+//         await product.save();
+
+//       } else {
+//         res.status(400)
+//         throw new error(`Sorry Product not found: ${item.product}`)
+//       }
+//     }
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 
 export {
   createOrder,

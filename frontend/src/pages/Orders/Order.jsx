@@ -9,7 +9,6 @@ import {
   useGetOrderDetailsQuery,
   usePayOrderMutation,
 } from "../../redux/api/orderApiSlice";
-import {useGetProductByIdQuery} from "../../redux/api/productApiSlice";
 
 
 const Order = () => {
@@ -102,22 +101,13 @@ const Order = () => {
     refetch();
   };
 
-  const params = useParams();
-  
-  const { data: productData } = useGetProductByIdQuery(params._id);
-  
-  const [stock, setStock] = useState(productData?.countInStock);
-  
-  console.log(productData)
-  
-
   return isLoading ? (
     <Loader />
   ) : error ? (
     <Messsage variant="danger">{error.data.message}</Messsage>
   ) : (    
     <div className="flex flex-col justify-center items-center mx-2">
-      <h1 className="text-[4rem] mb-4 uppercase tracking-[-5px] font-[999] mx-4">Payment.</h1>
+      <h1 className="text-[4rem] mb-4 capitalize tracking-[-5px] font-[999] mx-4">Payment.</h1>
       <div className="pr-4">
         <div className="border border-gray-300 mt-5 mb-5 w-[auto]">
           {order.orderItems.length === 0 ? (

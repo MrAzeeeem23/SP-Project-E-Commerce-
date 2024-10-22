@@ -22,7 +22,6 @@ const AdminProductUpdate = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState("");
 
@@ -46,7 +45,6 @@ const AdminProductUpdate = () => {
       setDescription(productData.description);
       setPrice(productData.price);
       setCategory(productData.category?._id);
-      setQuantity(productData.quantity);
       setBrand(productData.brand);
       setImage(productData.image);
       setStock(productData.countInStock);
@@ -63,7 +61,6 @@ const AdminProductUpdate = () => {
       formData.append("description", description);
       formData.append("price", price);
       formData.append("category", category);
-      formData.append("quantity", quantity);
       formData.append("brand", brand);
       formData.append("countInStock", stock);
       
@@ -127,7 +124,7 @@ const AdminProductUpdate = () => {
             <div className="text-center mb-4">
               {
                 loader ? <MiniLoader />
-                 : 
+                : 
                 <img src={image} alt="product" className="mx-auto w-60 h-60 object-cover rounded-lg" />
               }
             </div>
@@ -170,16 +167,6 @@ const AdminProductUpdate = () => {
 
             <div className="flex flex-col md:flex-row md:space-x-4">
               <div className="flex-1">
-                <label htmlFor="quantity" className="block text-gray-700">Quantity</label>
-                <input
-                  type="number"
-                  min="1"
-                  className="w-full p-2 border rounded-lg bg-gray-800 text-white"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
-              </div>
-              <div className="flex-1">
                 <label htmlFor="brand" className="block text-gray-700">Brand</label>
                 <input
                   type="text"
@@ -193,7 +180,7 @@ const AdminProductUpdate = () => {
             <div>
               <label htmlFor="description" className="block text-gray-700">Description</label>
               <textarea
-                className="w-full p-2 border rounded-lg bg-gray-800 text-white"
+                className="w-full h-[14rem] p-2 border rounded-lg bg-gray-800 text-white"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
