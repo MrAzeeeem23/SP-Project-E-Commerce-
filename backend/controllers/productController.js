@@ -5,7 +5,7 @@ const addProduct = asyncHandler(async (req, res) => {
   console.log(req.fields)
   try {
     const { name, description, price, category, quantity, brand } = req.fields;
-
+    
     // Validation
     switch (true) {
       case !name:
