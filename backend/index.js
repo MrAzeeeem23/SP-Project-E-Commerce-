@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true })); // using extended for URL objec
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://beats-store-ak.onrender.com', 
+  origin: process.env.CORS_URL, 
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // allowed HTTP methods
   credentials: true, // allow cookies to be sent
   allowedHeaders: ['Content-Type', 'Authorization'],
