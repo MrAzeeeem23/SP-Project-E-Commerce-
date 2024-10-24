@@ -23,5 +23,3 @@ This project is a full-stack e-commerce website built using the MERN stack (Mong
   - MongoDB
   - JWT Authentication
  
-## Live Preview 
- - Comming soon (#demo)
