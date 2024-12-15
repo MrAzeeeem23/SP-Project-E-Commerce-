@@ -49,8 +49,9 @@ const Login = () => {
   return (
     <div>
       <section className="flex item-center justify-center flex-wrap">
-        <div className="mx-4 mb-20 mt-[1rem] bg-black p-10 rounded-xl w-[30rem]">
-          <h1 className="text-[2rem] text-center font-semibold mb-4">Login</h1>
+        <div className="mx-4 mb-20 mt-[1rem] bg-black p-10 rounded-3xl w-[30rem]">
+
+          <h1 className="text-[2.5rem] mb-4 capitalize tracking-[-3px] font-[850]">Login</h1>
 
           <form onSubmit={submitHandler} className="container w-full">
             <div className="my-[2rem]">
@@ -63,7 +64,8 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
-                className="mt-1 p-2 border rounded w-full"
+                required
+                className="mt-1 p-2 border rounded-xl w-full"
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -76,12 +78,13 @@ const Login = () => {
                 className="text-sm font-medium text-white flex justify-between"
               >
                 Password
-              <button className="text-xl" onClick={toggling}>{toggle ? "🙈" : "🐵"}</button>
+                <button className="text-xl" type="button" onClick={toggling}>{toggle ? "🙈" : "🐵"}</button>
               </label>
               <input
                 type={toggle ? "text" : "password"}
                 id="password"
-                className="mt-1 p-2 border rounded w-full"
+                required
+                className="mt-1 p-2 border rounded-xl w-full"
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -91,7 +94,7 @@ const Login = () => {
             <button
               disabled={isLoading}
               type="submit"
-              className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer w-full transition-all hover:bg-red-700"
+              className="bg-red-500 text-white px-4 py-2 rounded-xl cursor-pointer w-full transition-all hover:bg-red-700"
             >
               {isLoading ? "Logging In..." : "Login"}
             </button>
@@ -100,7 +103,7 @@ const Login = () => {
           </form>
 
           <div className="mt-4">
-            <p className="text-white">
+            <p className="text-white text-center">
               New Customer?{" "}
               <Link
                 to={redirect ? `/register?redirect=${redirect}` : "/register"}

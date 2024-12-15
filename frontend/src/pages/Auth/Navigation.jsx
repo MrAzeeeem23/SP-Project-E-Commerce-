@@ -57,7 +57,7 @@ const Navigation = () => {
         </button>
 
 
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex space-x-6 ">
           <Link to="/" className="flex items-center transition-transform transform">
             <span className="material-symbols-outlined">home</span>
           </Link>
@@ -116,11 +116,11 @@ const Navigation = () => {
           )}
 
           {dropdownOpen && userInfo && (
-            <ul className="absolute z-[999] right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg transition-all">
+            <ul className="absolute z-[999] right-0 mt-2 w-60 text-lg bg-slate-50/30 backdrop-blur-3xl text-white rounded-2xl shadow-lg transition-all">
               {userInfo.isAdmin && (
                 <>
                   <li>
-                    <Link to="/admin/dashboard" className="block px-4 py-2 hover:bg-gray-100">
+                    <Link to="/admin/dashboard" className="block px-4 py-2 rounded-xl hover:bg-gray-100 ">
                       Dashboard
                     </Link>
                   </li>
@@ -165,7 +165,7 @@ const Navigation = () => {
               </li>
 
               <li>
-                <button onClick={logoutHandler} className="block w-full px-4 py-2 text-left hover:bg-gray-100">
+                <button onClick={logoutHandler} className="block w-full px-4 py-2 rounded-xl text-left hover:bg-red-700">
                   Logout
                 </button>
               </li>
@@ -175,19 +175,19 @@ const Navigation = () => {
       </div>
 
       <div
-        className={`fixed inset-0 z-[999] bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out ${
+        className={`fixed inset-0 z-[999] bg-black bg-opacity-50 transition-opacity duration-300 backdrop-blur-xl ease-in-out ${
           sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         onClick={closeSidebar}
       >
         <div
-          className={`fixed left-0 top-0 bottom-0 w-64 bg-black p-4 shadow-lg transform transition-transform duration-300 ease-in-out ${
+          className={`fixed left-0 top-0 bottom-0 w-64 p-4 bg-black shadow-lg transform transition-transform duration-300 ease-in-out ${
             sidebarOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex justify-between items-center mb-4 mt-10 text-[4rem]">
-            <h2 className="text-4xl font-bold uppercase tracking-[-4px]">Menu</h2>
+            <h2 className="text-4xl font-bold tracking-[-4px]">Menu</h2>
             <button onClick={toggleSidebar}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

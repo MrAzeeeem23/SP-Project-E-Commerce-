@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <main className='py-3'>
+      <main className='py-0'>
         <Navigation />
         <Outlet />
       </main>

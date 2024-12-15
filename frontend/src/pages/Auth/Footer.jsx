@@ -23,7 +23,7 @@ const Footer = () => {
         >
           <Link to="/">
             <span className="">
-              BEATS <br /> STORE
+              Beats <br /> Store
             </span>
           </Link>
         </span>
