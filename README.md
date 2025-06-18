@@ -106,5 +106,3 @@ This project is for educational purposes and may use a custom license. Please ch
 [GitHub Profile](https://github.com/MrAzeeeem23)
 
 ---
-
-*Feel free to customize this README for your needs, adding deployment instructions, screenshots, or additional features as your project grows!*
